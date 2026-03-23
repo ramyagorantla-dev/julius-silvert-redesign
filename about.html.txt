@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Julius Silvert Redesign</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Julius Silvert</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section style="padding: 60px 40px;">
+    <h1 style="margin-bottom: 20px;">Why This Redesign?</h1>
+    <p style="max-width: 900px; line-height: 1.8;">
+      This redesign improves the Julius Silvert B2B experience by fixing product duplication confusion,
+      improving pricing clarity, adding inventory visibility, simplifying quantity controls, and creating
+      a more premium chef-centric interface.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <p>Student Redesign Concept by Ramya Gorantla</p>
+  </footer>
+</body>
+</html>

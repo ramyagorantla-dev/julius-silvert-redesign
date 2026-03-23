@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalog - Julius Silvert Redesign</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Julius Silvert</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section style="padding: 50px 40px;">
+    <h1 style="margin-bottom: 30px;">Chef-Centric Product Catalog</h1>
+
+    <div class="features">
+      <div class="card">
+        <h2>Frozen Seafood</h2>
+        <p>Clear product imagery, unit labels, and stock alerts.</p>
+      </div>
+      <div class="card">
+        <h2>Produce</h2>
+        <p>Improved category structure and better item differentiation.</p>
+      </div>
+      <div class="card">
+        <h2>Dairy & Eggs</h2>
+        <p>Faster reorder flow for returning B2B buyers.</p>
+      </div>
+      <div class="card">
+        <h2>Custom Quote Products</h2>
+        <p>Quote request button replaces unclear MKT Price add flow.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Student Redesign Concept by Ramya Gorantla</p>
+  </footer>
+</body>
+</html>
