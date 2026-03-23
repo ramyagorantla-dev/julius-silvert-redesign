@@ -1,46 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julius Silvert Redesign</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julius Silvert Redesign</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="logo">Julius Silvert</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="catalog.html">Catalog</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Premium Food Sourcing for Professional Kitchens</h1>
-      <p>A chef-centric redesign focused on speed, clarity, and inventory visibility.</p>
-      <a href="catalog.html" class="btn">Explore Catalog</a>
-    </div>
-  </section>
+<header class="navbar">
+  <div class="logo">Julius Silvert</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Catalog</a>
+    <a href="#">Solutions</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-  <section class="features">
-    <div class="card">
-      <h2>Live Inventory Alerts</h2>
-      <p>Quickly see low stock, available items, and quote-only products.</p>
-    </div>
-    <div class="card">
-      <h2>Faster Ordering</h2>
-      <p>Improved quantity controls and clearer unit selection for B2B buyers.</p>
-    </div>
-    <div class="card">
-      <h2>Smarter Search</h2>
-      <p>Typo-tolerant search and better category navigation.</p>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Designed for Professional Kitchens</h1>
+    <p>A modern B2B food sourcing platform built for chefs and distributors</p>
+    <button>Explore Products</button>
+  </div>
+</section>
 
-  <footer class="footer">
-    <p>Student Redesign Concept by Ramya Gorantla</p>
-  </footer>
+<section class="inventory">
+  <h2>Smart Inventory Visibility</h2>
+
+  <div class="inventory-grid">
+    <div class="item in-stock">In Stock</div>
+    <div class="item low-stock">Low Stock</div>
+    <div class="item out-stock">Out of Stock</div>
+    <div class="item quote">Request Quote</div>
+  </div>
+</section>
+
+<section class="categories">
+  <h2>Browse Categories</h2>
+
+  <div class="grid">
+    <div class="card">Seafood</div>
+    <div class="card">Meat</div>
+    <div class="card">Dairy</div>
+    <div class="card">Produce</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div>
+      <h3>Julius Silvert</h3>
+      <p>Premium ingredients for professional kitchens</p>
+    </div>
+
+    <div>
+      <h4>Quick Links</h4>
+      <p>Catalog</p>
+      <p>Orders</p>
+      <p>Support</p>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>Email: support@julius.com</p>
+      <p>Phone: +1 123 456 7890</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
