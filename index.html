@@ -1,75 +1,1147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julius Silvert Redesign</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChefOrdering | Julius Silvert Redesign</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root{
+      --navy:#0d1737;
+      --navy2:#152454;
+      --gold:#cda45b;
+      --gold2:#e8cb93;
+      --bg:#f4f7fb;
+      --white:#fff;
+      --text:#14213d;
+      --muted:#66748f;
+      --line:#e6ebf3;
+      --shadow:0 18px 48px rgba(11,19,44,.12);
+      --radius:22px;
+      --green:#198754;
+      --amber:#b7791f;
+      --slate:#5f6b85;
+      --red:#b42318;
+    }
+    html { scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(205,164,91,.12), transparent 20%),
+        linear-gradient(180deg, #eef3f9 0%, #f8fafc 100%);
+    }
+    a { text-decoration:none; color:inherit; }
+    .container{ width:min(1240px, calc(100% - 40px)); margin:0 auto; }
+
+    .announce{
+      background:#dbe1ef;
+      color:#172447;
+      font-size:14px;
+      border-bottom:1px solid rgba(13,23,55,.08);
+    }
+    .announce .container{
+      min-height:42px; display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+
+    .header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+    }
+    .topbar{
+      background:rgba(13,23,55,.97);
+      padding:16px 0;
+    }
+    .topbar-inner{
+      display:grid;
+      grid-template-columns: 230px 1fr 200px;
+      gap:18px;
+      align-items:center;
+    }
+    .logo{
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      line-height:1;
+    }
+    .logo-main{
+      font-size:30px; font-weight:700; letter-spacing:-.04em;
+    }
+    .logo-main span{ font-weight:300; margin-left:2px; }
+    .logo-sub{
+      margin-top:6px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      opacity:.72;
+    }
+
+    .search-wrap{ position:relative; }
+    .search-input{
+      width:100%; height:52px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      padding:0 18px 0 48px;
+      font-size:16px;
+      outline:none;
+      background:rgba(255,255,255,.97);
+    }
+    .search-icon{
+      position:absolute; left:16px; top:50%; transform:translateY(-50%);
+      color:#6b7280; font-size:18px;
+    }
+    .top-actions{
+      display:flex; justify-content:flex-end; gap:12px; align-items:center;
+      color:#fff;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.08);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:14px;
+      display:inline-flex; align-items:center; gap:8px;
+      cursor:pointer;
+    }
+    .cart-count{
+      width:22px; height:22px; border-radius:50%;
+      background:#fff; color:var(--navy);
+      display:inline-grid; place-items:center;
+      font-size:12px; font-weight:700;
+    }
+
+    .nav{
+      background:rgba(13,23,55,.99);
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-row{
+      min-height:54px; display:flex; align-items:center; gap:26px;
+      overflow-x:auto; scrollbar-width:none;
+    }
+    .nav-row::-webkit-scrollbar{ display:none; }
+    .nav a{
+      white-space:nowrap; color:#fff; font-size:15px;
+    }
+
+    .hero{
+      background:
+        linear-gradient(115deg, rgba(13,23,55,.96), rgba(20,33,80,.90)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color:#fff;
+      padding:54px 0 40px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .9fr;
+      gap:28px;
+      align-items:center;
+    }
+    .kicker{
+      display:inline-block;
+      color:var(--gold2);
+      font-size:12px;
+      letter-spacing:.16em;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .hero h1{
+      margin:16px 0 18px;
+      font-size:clamp(40px, 5vw, 68px);
+      line-height:1.02;
+      letter-spacing:-.05em;
+      max-width:760px;
+    }
+    .hero p{
+      margin:0;
+      max-width:680px;
+      color:rgba(255,255,255,.84);
+      line-height:1.8;
+      font-size:18px;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:14px; margin:28px 0 30px;
+    }
+    .btn{
+      border:none; cursor:pointer;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:700;
+      font-size:15px;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--gold), #f2d396);
+      color:#1b2235;
+      box-shadow:0 10px 28px rgba(205,164,91,.28);
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .hero-metrics{
+      display:flex; flex-wrap:wrap; gap:14px;
+    }
+    .metric{
+      min-width:150px;
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.08);
+    }
+    .metric strong{ display:block; font-size:24px; }
+    .metric span{ display:block; margin-top:6px; color:rgba(255,255,255,.76); font-size:14px; }
+
+    .dashboard{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+    .dash-head{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      color:#fff; font-weight:700;
+    }
+    .live{
+      position:relative; padding-left:14px; color:#d7f4e0; font-size:13px;
+    }
+    .live::before{
+      content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+      width:8px; height:8px; border-radius:50%; background:#41c774;
+    }
+    .alert-list{ display:grid; gap:10px; margin-top:18px; }
+    .alert-chip{
+      width:fit-content;
+      border-radius:999px;
+      padding:11px 14px;
+      font-size:14px;
+      font-weight:700;
+    }
+    .in-stock{ background:#e8f7ee; color:#147a46; border:1px solid #cbe8d8; }
+    .low-stock{ background:#fff5df; color:#a86805; border:1px solid #f3dfb1; }
+    .quote-only{ background:#eef2f7; color:#44516c; border:1px solid #dfe6ef; }
+    .restock{ background:#e8eeff; color:#3554b6; border:1px solid #d3ddff; }
+
+    .dashboard-cards{
+      margin-top:18px;
+      display:grid; gap:12px;
+    }
+    .dash-mini{
+      display:grid;
+      grid-template-columns:54px 1fr;
+      gap:14px;
+      align-items:center;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:14px;
+      border-radius:18px;
+      color:#fff;
+    }
+    .mini-thumb{
+      width:54px; height:54px; border-radius:14px;
+      background-size:cover; background-position:center;
+    }
+    .thumb-seafood{ background-image:url("https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=400&q=80"); }
+    .thumb-produce{ background-image:url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80"); }
+    .thumb-frozen{ background-image:url("https://images.unsplash.com/photo-1625944524160-41d64894a8ef?auto=format&fit=crop&w=400&q=80"); }
+    .dash-mini p{ margin:5px 0 0; color:rgba(255,255,255,.75); font-size:13px; }
+
+    .section{
+      padding:42px 0;
+    }
+    .cards-3{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    }
+    .info-card{
+      background:#fff;
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
+    }
+    .info-card span{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.14em;
+      color:#6c7792;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .info-card h3{ margin:12px 0 10px; font-size:24px; }
+    .info-card p{ margin:0; color:var(--muted); line-height:1.75; }
+
+    .section-head{
+      display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:24px;
+    }
+    .section-head h2{
+      margin:10px 0 0;
+      font-size:clamp(30px, 4vw, 46px);
+      line-height:1.08;
+      letter-spacing:-.04em;
+    }
+    .section-link{ color:#203460; font-weight:700; }
+
+    .cat-grid{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    }
+    .cat{
+      position:relative; min-height:300px; overflow:hidden; border-radius:28px; box-shadow:var(--shadow);
+      display:flex; align-items:end; background-size:cover; background-position:center;
+    }
+    .cat::before{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(9,16,38,.12) 10%, rgba(9,16,38,.86) 92%);
+    }
+    .cat-content{
+      position:relative; z-index:1; color:#fff; padding:24px;
+    }
+    .cat-content span{
+      color:rgba(255,255,255,.78); font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    }
+    .cat-content h3{ margin:10px 0 8px; font-size:32px; }
+    .cat-content p{ margin:0; color:rgba(255,255,255,.83); line-height:1.6; }
+    .c1{ background-image:url("https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80"); }
+    .c2{ background-image:url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80"); }
+    .c3{ background-image:url("https://images.unsplash.com/photo-1499125562588-29fb8a56b5d5?auto=format&fit=crop&w=900&q=80"); }
+    .c4{ background-image:url("https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=80"); }
+
+    .product-layout{
+      display:grid; grid-template-columns: 290px 1fr; gap:24px; align-items:start;
+    }
+    .sidebar{
+      background:#fff; border-radius:22px; box-shadow:var(--shadow); padding:22px;
+      position:sticky; top:132px;
+    }
+    .sidebar h3{ margin:0 0 18px; font-size:20px; }
+    .filter{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px 16px;
+      margin-bottom:12px;
+      display:flex; justify-content:space-between; align-items:center;
+      background:#fafbfd;
+    }
+
+    .product-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+    }
+    .product{
+      background:#fff;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid #eef2f7;
+      display:flex;
+      flex-direction:column;
+    }
+    .product-image{
+      aspect-ratio: 1.15 / 1;
+      background-size:cover;
+      background-position:center;
+    }
+    .p1{ background-image:url("https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=900&q=80"); }
+    .p2{ background-image:url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"); }
+    .p3{ background-image:url("https://images.unsplash.com/photo-1615937691194-97dbd3f3dc29?auto=format&fit=crop&w=900&q=80"); }
+    .p4{ background-image:url("https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80"); }
+    .p5{ background-image:url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"); }
+    .p6{ background-image:url("https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=80"); }
+
+    .product-body{ padding:18px; }
+    .prod-top{
+      display:flex; justify-content:space-between; align-items:start; gap:12px;
+    }
+    .case-pill{
+      border:1px solid #cfd8e8;
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:12px;
+      font-weight:700;
+      color:#22355d;
+      width:fit-content;
+      margin-top:10px;
+    }
+    .product h3{
+      margin:0;
+      font-size:24px;
+      line-height:1.2;
+      letter-spacing:-.03em;
+    }
+    .product small{
+      display:block;
+      color:var(--muted);
+      margin-top:10px;
+      line-height:1.6;
+      font-size:14px;
+    }
+    .price-row{
+      display:flex; align-items:baseline; gap:10px; margin-top:16px; flex-wrap:wrap;
+    }
+    .price{ font-size:31px; font-weight:800; color:#10203e; letter-spacing:-.04em; }
+    .subprice{ color:var(--muted); font-size:14px; }
+    .status-row{
+      display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;
+    }
+    .status{
+      border-radius:999px; padding:7px 10px; font-size:12px; font-weight:700;
+    }
+
+    .buy-row{
+      display:flex; gap:10px; align-items:center; margin-top:18px;
+    }
+    .qty{
+      display:flex; align-items:center; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+      background:#fafbfd;
+    }
+    .qty button{
+      width:38px; height:44px; border:none; background:#eef3f8; cursor:pointer; font-size:18px; font-weight:700;
+    }
+    .qty span{
+      width:42px; display:grid; place-items:center; font-weight:700;
+    }
+    .add{
+      flex:1;
+      border:none;
+      height:44px;
+      border-radius:14px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .inventory-layout{
+      display:grid; grid-template-columns:1fr 1fr; gap:28px;
+    }
+    .inventory-copy p, .inventory-copy li{
+      color:var(--muted); line-height:1.85;
+    }
+    .demo{
+      background:#fff; border-radius:22px; box-shadow:var(--shadow); padding:22px;
+    }
+    .demo-badges{ display:flex; flex-wrap:wrap; gap:10px; }
+    .badge{
+      border-radius:999px; padding:9px 12px; font-size:13px; font-weight:700;
+    }
+    .green{ background:#e7f8ec; color:#1f8a49; }
+    .amber{ background:#fff4dc; color:#a86e00; }
+    .slate{ background:#eef1f6; color:#45526f; }
+    .demo-body{
+      display:grid; grid-template-columns:160px 1fr; gap:18px; align-items:center; margin-top:18px;
+    }
+    .demo-image{
+      width:100%; aspect-ratio:1/1; border-radius:22px;
+      background:
+        linear-gradient(rgba(13,23,55,.05), rgba(13,23,55,.05)),
+        url("https://images.unsplash.com/photo-1579631542720-3a87824fff86?auto=format&fit=crop&w=700&q=80") center/cover no-repeat;
+    }
+    .demo h3{ margin:0; font-size:24px; }
+    .demo p{ color:var(--muted); line-height:1.7; }
+    .demo-actions{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    }
+    .demo-actions .qty button, .demo-actions .qty span{ height:44px; }
+    .demo small{ display:block; color:#66748f; margin-top:12px; }
+
+    .pitch-grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:24px;
+    }
+    .pitch-card, .point{
+      background:#fff; border-radius:22px; box-shadow:var(--shadow);
+    }
+    .pitch-card{ padding:26px; }
+    .pitch-card p{ color:var(--muted); line-height:1.85; }
+    .points{ display:grid; gap:18px; }
+    .point{ padding:22px; }
+    .point h3{ margin:0 0 8px; font-size:22px; }
+    .point p{ margin:0; color:var(--muted); line-height:1.75; }
+
+    .footer{
+      margin-top:24px;
+      background:linear-gradient(180deg, #0b1432 0%, #111d43 100%);
+      color:#fff;
+      padding:42px 0;
+    }
+    .footer-grid{
+      display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:24px;
+    }
+    .footer p, .footer a{ color:rgba(255,255,255,.76); line-height:1.85; }
+    .footer h4{ margin:0 0 12px; font-size:18px; }
+    .footer a{ display:block; margin-bottom:8px; }
+
+    .cart-drawer{
+      position:fixed;
+      top:0; right:-420px;
+      width:400px; max-width:100%;
+      height:100vh;
+      background:#fff;
+      box-shadow:-10px 0 30px rgba(0,0,0,.12);
+      z-index:100;
+      transition:.28s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .cart-drawer.open{ right:0; }
+    .cart-head{
+      padding:18px 20px;
+      border-bottom:1px solid var(--line);
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .cart-head h3{ margin:0; }
+    .cart-close{
+      border:none; background:#edf2f8; width:38px; height:38px; border-radius:10px; cursor:pointer;
+    }
+    .cart-items{
+      flex:1; overflow:auto; padding:18px 20px;
+    }
+    .cart-item{
+      border-bottom:1px solid var(--line);
+      padding:0 0 14px;
+      margin-bottom:14px;
+    }
+    .cart-item h4{ margin:0 0 8px; font-size:18px; }
+    .cart-item p{ margin:0; color:var(--muted); font-size:14px; }
+    .cart-item-row{
+      display:flex; justify-content:space-between; align-items:center; margin-top:10px; gap:10px;
+    }
+    .remove-btn{
+      border:none; background:#fff1f2; color:#b42318; padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:700;
+    }
+    .cart-foot{
+      border-top:1px solid var(--line);
+      padding:18px 20px;
+      background:#fbfcfe;
+    }
+    .total-row{
+      display:flex; justify-content:space-between; font-weight:800; font-size:20px; margin-bottom:14px;
+    }
+    .checkout{
+      width:100%; height:48px; border:none; border-radius:14px; background:var(--navy); color:#fff; font-weight:700; cursor:pointer;
+    }
+    .overlay{
+      position:fixed; inset:0; background:rgba(10,18,44,.34); opacity:0; visibility:hidden; transition:.25s ease; z-index:90;
+    }
+    .overlay.show{ opacity:1; visibility:visible; }
+
+    @media (max-width:1100px){
+      .topbar-inner{ grid-template-columns:1fr; }
+      .top-actions{ justify-content:flex-start; }
+      .hero-grid, .cards-3, .cat-grid, .product-grid, .inventory-layout, .pitch-grid, .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+      .product-layout{ grid-template-columns:1fr; }
+      .sidebar{ position:static; }
+    }
+
+    @media (max-width:760px){
+      .container{ width:min(100% - 28px, 1240px); }
+      .announce .container, .section-head{ flex-direction:column; align-items:flex-start; }
+      .hero-grid, .cards-3, .cat-grid, .product-grid, .inventory-layout, .pitch-grid, .footer-grid, .demo-body{
+        grid-template-columns:1fr;
+      }
+      .hero h1{ font-size:40px; }
+      .nav-row{ gap:18px; }
+      .cat{ min-height:250px; }
+      .cart-drawer{ width:100%; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header class="navbar">
-  <div class="logo">Julius Silvert</div>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Catalog</a>
-    <a href="#">Solutions</a>
-    <a href="#">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>Designed for Professional Kitchens</h1>
-    <p>A modern B2B food sourcing platform built for chefs and distributors</p>
-    <button>Explore Products</button>
-  </div>
-</section>
-
-<section class="inventory">
-  <h2>Smart Inventory Visibility</h2>
-
-  <div class="inventory-grid">
-    <div class="item in-stock">In Stock</div>
-    <div class="item low-stock">Low Stock</div>
-    <div class="item out-stock">Out of Stock</div>
-    <div class="item quote">Request Quote</div>
-  </div>
-</section>
-
-<section class="categories">
-  <h2>Browse Categories</h2>
-
-  <div class="grid">
-    <div class="card">Seafood</div>
-    <div class="card">Meat</div>
-    <div class="card">Dairy</div>
-    <div class="card">Produce</div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-container">
-    <div>
-      <h3>Julius Silvert</h3>
-      <p>Premium ingredients for professional kitchens</p>
-    </div>
-
-    <div>
-      <h4>Quick Links</h4>
-      <p>Catalog</p>
-      <p>Orders</p>
-      <p>Support</p>
-    </div>
-
-    <div>
-      <h4>Contact</h4>
-      <p>Email: support@julius.com</p>
-      <p>Phone: +1 123 456 7890</p>
+  <div class="announce">
+    <div class="container">
+      <span><strong>Hi! Ramya Gorantla</strong> — Let us know if you need help with your order.</span>
+      <a href="#pitch">Why this redesign works</a>
     </div>
   </div>
-</footer>
 
+  <header class="header">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="logo">
+          <span class="logo-main">Julius<span>Silvert</span></span>
+          <span class="logo-sub">Est. 1915</span>
+        </div>
+
+        <div class="search-wrap">
+          <span class="search-icon">⌕</span>
+          <input class="search-input" id="searchInput" type="text" placeholder="What can we help you find today?" />
+        </div>
+
+        <div class="top-actions">
+          <div class="pill">Account</div>
+          <button class="pill" id="openCartBtn"><span class="cart-count" id="cartCount">0</span>Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="container nav-row">
+        <a href="#hero">WHAT'S NEW</a>
+        <a href="#products">MEAT & POULTRY</a>
+        <a href="#products">DAIRY & EGGS</a>
+        <a href="#products">CHEESE & CHARCUTERIE</a>
+        <a href="#products">OILS & VINEGARS</a>
+        <a href="#products">BAKING & PASTRY</a>
+        <a href="#products">PRODUCE</a>
+        <a href="#products">FROZEN</a>
+        <a href="#products">SEAFOOD</a>
+        <a href="#products">PANTRY</a>
+        <a href="#products">SUPPLIES</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">CHEF-CENTRIC B2B EXPERIENCE</span>
+          <h1>A premium sourcing platform built for modern kitchens.</h1>
+          <p>
+            This redesign keeps the familiar Julius Silvert feel, but upgrades the homepage into a cleaner,
+            more premium, high-tech kitchen tool with better navigation, stronger hero hierarchy,
+            clearer product discovery, and visible inventory communication.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#products" class="btn btn-primary">Shop Featured Products</a>
+            <a href="#inventory" class="btn btn-secondary">See Inventory Alerts</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>8,000+</strong>
+              <span>Catalog SKUs</span>
+            </div>
+            <div class="metric">
+              <strong>Live</strong>
+              <span>Inventory messaging</span>
+            </div>
+            <div class="metric">
+              <strong>B2B</strong>
+              <span>Chef-first ordering</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard">
+          <div class="dash-head">
+            <span>Today's kitchen dashboard</span>
+            <span class="live">Operational</span>
+          </div>
+
+          <div class="alert-list" id="inventoryAlerts">
+            <div class="alert-chip in-stock">Atlantic Salmon — In Stock</div>
+            <div class="alert-chip low-stock">Microgreens — Low Stock</div>
+            <div class="alert-chip quote-only">Black Winter Truffles — Quote Required</div>
+            <div class="alert-chip restock">Scallops — Restocking Tomorrow</div>
+          </div>
+
+          <div class="dashboard-cards">
+            <div class="dash-mini">
+              <div class="mini-thumb thumb-seafood"></div>
+              <div>
+                <strong>Live inventory badges</strong>
+                <p>Visible before product click</p>
+              </div>
+            </div>
+            <div class="dash-mini">
+              <div class="mini-thumb thumb-produce"></div>
+              <div>
+                <strong>Cleaner category flow</strong>
+                <p>Faster kitchen-side ordering</p>
+              </div>
+            </div>
+            <div class="dash-mini">
+              <div class="mini-thumb thumb-frozen"></div>
+              <div>
+                <strong>Quote-aware purchasing</strong>
+                <p>No ambiguity on market-price items</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cards-3">
+        <article class="info-card">
+          <span>Hero optimization</span>
+          <h3>Stronger first impression</h3>
+          <p>The homepage leads with premium positioning, clear value, and direct actions for busy chefs and purchasing teams.</p>
+        </article>
+        <article class="info-card">
+          <span>Footer redesign</span>
+          <h3>Cleaner, more useful footer</h3>
+          <p>Support links, ordering actions, business information, and quick navigation are organized more clearly.</p>
+        </article>
+        <article class="info-card">
+          <span>Dynamic inventory</span>
+          <h3>Live-status communication</h3>
+          <p>In stock, low stock, quote required, and restocking states help users make faster ordering decisions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker" style="color:#7b879e">CORE CATEGORIES</span>
+            <h2>Browse the kitchen the way chefs actually shop.</h2>
+          </div>
+          <a class="section-link" href="#products">View featured catalog</a>
+        </div>
+
+        <div class="cat-grid">
+          <article class="cat c1">
+            <div class="cat-content">
+              <span>Premium proteins</span>
+              <h3>Seafood</h3>
+              <p>Fresh and frozen fish, shellfish, and chef-ready specialty items.</p>
+            </div>
+          </article>
+          <article class="cat c2">
+            <div class="cat-content">
+              <span>Market-driven selection</span>
+              <h3>Produce</h3>
+              <p>Seasonal fruit, herbs, specialty vegetables, and kitchen essentials.</p>
+            </div>
+          </article>
+          <article class="cat c3">
+            <div class="cat-content">
+              <span>Fast-moving inventory</span>
+              <h3>Frozen</h3>
+              <p>Desserts, vegetables, seafood, and ready-to-bake items with clear status alerts.</p>
+            </div>
+          </article>
+          <article class="cat c4">
+            <div class="cat-content">
+              <span>Back-of-house staples</span>
+              <h3>Pantry</h3>
+              <p>Dry goods, oils, vinegars, condiments, and imported essentials.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker" style="color:#7b879e">FEATURED PRODUCTS</span>
+            <h2>Real product-style shopping with purchasing actions.</h2>
+          </div>
+          <a class="section-link" href="#pitch">See platform recommendation</a>
+        </div>
+
+        <div class="product-layout">
+          <aside class="sidebar">
+            <h3>Shop By</h3>
+            <div class="filter"><span>Category</span><span>⌄</span></div>
+            <div class="filter"><span>Brand</span><span>⌄</span></div>
+            <div class="filter"><span>Availability</span><span>⌄</span></div>
+            <div class="filter"><span>Price</span><span>⌄</span></div>
+            <div class="filter"><span>Pack Size</span><span>⌄</span></div>
+          </aside>
+
+          <div class="product-grid" id="productGrid">
+            <article class="product" data-name="Atlantic Salmon Portions" data-price="128.50">
+              <div class="product-image p1"></div>
+              <div class="product-body">
+                <div class="prod-top">
+                  <div>
+                    <h3>Atlantic Salmon Portions</h3>
+                    <small>PACKER<br>Item#: 5400210</small>
+                    <div class="case-pill">CASE</div>
+                  </div>
+                </div>
+                <div class="price-row">
+                  <div class="price">$128.50</div>
+                  <div class="subprice">1 x 10lb</div>
+                </div>
+                <div class="status-row">
+                  <span class="status in-stock">In Stock</span>
+                </div>
+                <div class="buy-row">
+                  <div class="qty">
+                    <button onclick="changeQty(this,-1)">−</button>
+                    <span>1</span>
+                    <button onclick="changeQty(this,1)">+</button>
+                  </div>
+                  <button class="add" onclick="addToCart('Atlantic Salmon Portions',128.50,this)">Add</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-name="U-10 Dry Pack Scallops" data-price="156.00">
+              <div class="product-image p2"></div>
+              <div class="product-body">
+                <h3>U-10 Dry Pack Scallops</h3>
+                <small>FISHERKING SEAFOODS<br>Item#: 5482104</small>
+                <div class="case-pill">CASE</div>
+                <div class="price-row">
+                  <div class="price">$156.00</div>
+                  <div class="subprice">2 x 5lb</div>
+                </div>
+                <div class="status-row">
+                  <span class="status low-stock">Low Stock</span>
+                </div>
+                <div class="buy-row">
+                  <div class="qty">
+                    <button onclick="changeQty(this,-1)">−</button>
+                    <span>1</span>
+                    <button onclick="changeQty(this,1)">+</button>
+                  </div>
+                  <button class="add" onclick="addToCart('U-10 Dry Pack Scallops',156.00,this)">Add</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-name="Black Winter Truffles" data-price="245.00">
+              <div class="product-image p3"></div>
+              <div class="product-body">
+                <h3>Black Winter Truffles</h3>
+                <small>URBANI<br>Item#: 7756405</small>
+                <div class="case-pill">QUOTE</div>
+                <div class="price-row">
+                  <div class="price">$245.00</div>
+                  <div class="subprice">1 x 4oz</div>
+                </div>
+                <div class="status-row">
+                  <span class="status quote-only">Request Quote</span>
+                </div>
+                <div class="buy-row">
+                  <div class="qty">
+                    <button onclick="changeQty(this,-1)">−</button>
+                    <span>1</span>
+                    <button onclick="changeQty(this,1)">+</button>
+                  </div>
+                  <button class="add" onclick="addToCart('Black Winter Truffles',245.00,this)">Add</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-name="Chef Ready Tenderloin" data-price="189.75">
+              <div class="product-image p4"></div>
+              <div class="product-body">
+                <h3>Chef Ready Tenderloin</h3>
+                <small>COMPART<br>Item#: 1816666</small>
+                <div class="case-pill">CASE</div>
+                <div class="price-row">
+                  <div class="price">$189.75</div>
+                  <div class="subprice">2 x 5lb</div>
+                </div>
+                <div class="status-row">
+                  <span class="status restock">Restocking Soon</span>
+                </div>
+                <div class="buy-row">
+                  <div class="qty">
+                    <button onclick="changeQty(this,-1)">−</button>
+                    <span>1</span>
+                    <button onclick="changeQty(this,1)">+</button>
+                  </div>
+                  <button class="add" onclick="addToCart('Chef Ready Tenderloin',189.75,this)">Add</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-name="Microgreens Assortment" data-price="39.50">
+              <div class="product-image p5"></div>
+              <div class="product-body">
+                <h3>Microgreens Assortment</h3>
+                <small>PACKER<br>Item#: 4900538</small>
+                <div class="case-pill">CASE</div>
+                <div class="price-row">
+                  <div class="price">$39.50</div>
+                  <div class="subprice">1 x 12ct</div>
+                </div>
+                <div class="status-row">
+                  <span class="status low-stock">Low Stock</span>
+                </div>
+                <div class="buy-row">
+                  <div class="qty">
+                    <button onclick="changeQty(this,-1)">−</button>
+                    <span>1</span>
+                    <button onclick="changeQty(this,1)">+</button>
+                  </div>
+                  <button class="add" onclick="addToCart('Microgreens Assortment',39.50,this)">Add</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product" data-name="Artisan Brioche Rolls" data-price="28.25">
+              <div class="product-image p6"></div>
+              <div class="product-body">
+                <h3>Artisan Brioche Rolls</h3>
+                <small>MARTIN'S FAMOUS<br>Item#: 5872600</small>
+                <div class="case-pill">CASE</div>
+                <div class="price-row">
+                  <div class="price">$28.25</div>
+                  <div class="subprice">6 x 8ct</div>
+                </div>
+                <div class="status-row">
+                  <span class="status in-stock">In Stock</span>
+                </div>
+                <div class="buy-row">
+                  <div class="qty">
+                    <button onclick="changeQty(this,-1)">−</button>
+                    <span>1</span>
+                    <button onclick="changeQty(this,1)">+</button>
+                  </div>
+                  <button class="add" onclick="addToCart('Artisan Brioche Rolls',28.25,this)">Add</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container inventory-layout">
+        <div class="inventory-copy">
+          <span class="kicker" style="color:#7b879e">DYNAMIC INVENTORY ALERTS</span>
+          <h2 style="margin:10px 0 14px; font-size:clamp(30px,4vw,46px); line-height:1.08; letter-spacing:-.04em;">How the homepage would handle live inventory communication.</h2>
+          <p>
+            Instead of hiding stock conditions inside product pages only, the redesign surfaces inventory states
+            directly on the homepage and product cards. This supports faster chef decision-making during rush ordering
+            and makes quote-only items clearer.
+          </p>
+          <ul>
+            <li><strong>In Stock:</strong> ready for immediate ordering</li>
+            <li><strong>Low Stock:</strong> prompts faster buying action</li>
+            <li><strong>Quote Required:</strong> clearer alternative for market-price items</li>
+            <li><strong>Restocking Soon:</strong> sets purchase expectations</li>
+          </ul>
+        </div>
+
+        <div class="demo" id="inventory">
+          <div class="demo-badges">
+            <span class="badge green">In Stock</span>
+            <span class="badge amber">Low Stock</span>
+            <span class="badge slate">Quote Required</span>
+          </div>
+          <div class="demo-body">
+            <div class="demo-image"></div>
+            <div>
+              <h3>Chef-Ready Scallops</h3>
+              <p>U-10 Dry Pack — Fresh, 2 x 5lb</p>
+              <div class="demo-actions">
+                <div class="qty">
+                  <button>−</button>
+                  <span>1</span>
+                  <button>+</button>
+                </div>
+                <button class="add-btn" style="height:44px; border:none; border-radius:14px; background:var(--navy); color:#fff; padding:0 20px; font-weight:700;">Add to Order</button>
+              </div>
+            </div>
+          </div>
+          <small>UI concept: inventory state is visible before checkout interaction.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pitch">
+      <div class="container pitch-grid">
+        <div class="pitch-card">
+          <span class="kicker" style="color:#7b879e">THE PITCH</span>
+          <h2 style="margin:10px 0 14px; font-size:clamp(30px,4vw,46px); line-height:1.08; letter-spacing:-.04em;">Why SAP Commerce Cloud is the right engine for this design.</h2>
+          <p>
+            This homepage is designed for a high-volume B2B distributor, not a simple retail store.
+            SAP Commerce Cloud is the strongest fit because it supports enterprise-scale catalogs,
+            custom B2B pricing logic, quote workflows, account-based ordering, and deep ERP integration.
+          </p>
+          <p>
+            That makes it the right platform to power chef-centric features like dynamic inventory alerts,
+            premium category navigation, and operationally realistic purchasing experiences.
+          </p>
+        </div>
+
+        <div class="points">
+          <div class="point">
+            <h3>Scalability</h3>
+            <p>Supports thousands of SKUs and high-volume B2B traffic with enterprise architecture.</p>
+          </div>
+          <div class="point">
+            <h3>Custom B2B Logic</h3>
+            <p>Handles contract pricing, quote workflows, and account-specific ordering experiences.</p>
+          </div>
+          <div class="point">
+            <h3>ERP Integration</h3>
+            <p>Best suited for inventory-aware, operations-heavy distribution environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-main">Julius<span>Silvert</span></span>
+          <span class="logo-sub">Chef-Centric Redesign Concept</span>
+        </div>
+        <p>Premium sourcing experience for professional kitchens, redesigned to be cleaner, faster, and more inventory-aware.</p>
+      </div>
+      <div>
+        <h4>Ordering</h4>
+        <a href="#products">Browse Catalog</a>
+        <a href="#products">Featured Products</a>
+        <a href="#inventory">Inventory Alerts</a>
+      </div>
+      <div>
+        <h4>Business</h4>
+        <a href="#pitch">Platform Recommendation</a>
+        <a href="#categories">Category Flow</a>
+        <a href="#hero">Homepage Vision</a>
+      </div>
+      <div>
+        <h4>Project Note</h4>
+        <p>Student redesign by Ramya Gorantla for Web Server Platforms.</p>
+        <p>Live-hosted homepage concept for class review.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-head">
+      <h3>Your Order</h3>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p style="color:#66748f;">Your cart is empty.</p>
+    </div>
+    <div class="cart-foot">
+      <div class="total-row">
+        <span>Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkout">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <script>
+    const cart = [];
+
+    function changeQty(button, delta) {
+      const qtyBox = button.parentElement.querySelector("span");
+      let value = parseInt(qtyBox.textContent, 10);
+      value += delta;
+      if (value < 1) value = 1;
+      qtyBox.textContent = value;
+    }
+
+    function addToCart(name, price, btn) {
+      const card = btn.closest(".product");
+      const qty = parseInt(card.querySelector(".qty span").textContent, 10);
+
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ name, price, qty });
+      }
+
+      updateCartUI();
+      openCart();
+    }
+
+    function updateCartUI() {
+      const cartItems = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+      const cartCount = document.getElementById("cartCount");
+
+      cartItems.innerHTML = "";
+      let total = 0;
+      let count = 0;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p style="color:#66748f;">Your cart is empty.</p>';
+      } else {
+        cart.forEach((item, index) => {
+          total += item.price * item.qty;
+          count += item.qty;
+
+          const div = document.createElement("div");
+          div.className = "cart-item";
+          div.innerHTML = `
+            <h4>${item.name}</h4>
+            <p>$${item.price.toFixed(2)} each</p>
+            <div class="cart-item-row">
+              <div class="qty">
+                <button onclick="updateCartQty(${index}, -1)">−</button>
+                <span>${item.qty}</span>
+                <button onclick="updateCartQty(${index}, 1)">+</button>
+              </div>
+              <button class="remove-btn" onclick="removeCartItem(${index})">Remove</button>
+            </div>
+          `;
+          cartItems.appendChild(div);
+        });
+      }
+
+      cartTotal.textContent = "$" + total.toFixed(2);
+      cartCount.textContent = count;
+    }
+
+    function updateCartQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function removeCartItem(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+    }
+
+    function openCart() {
+      document.getElementById("cartDrawer").classList.add("open");
+      document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeCart() {
+      document.getElementById("cartDrawer").classList.remove("open");
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    document.getElementById("openCartBtn").addEventListener("click", openCart);
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", function() {
+      const query = this.value.toLowerCase().trim();
+      const products = document.querySelectorAll(".product");
+
+      products.forEach(product => {
+        const name = product.dataset.name.toLowerCase();
+        product.style.display = name.includes(query) ? "" : "none";
+      });
+    });
+
+    const rotatingAlerts = [
+      ["Atlantic Salmon — In Stock", "alert-chip in-stock"],
+      ["Microgreens — Low Stock", "alert-chip low-stock"],
+      ["Black Winter Truffles — Quote Required", "alert-chip quote-only"],
+      ["Scallops — Restocking Tomorrow", "alert-chip restock"]
+    ];
+
+    let alertIndex = 0;
+    setInterval(() => {
+      const first = document.querySelector("#inventoryAlerts .alert-chip");
+      alertIndex = (alertIndex + 1) % rotatingAlerts.length;
+      first.textContent = rotatingAlerts[alertIndex][0];
+      first.className = rotatingAlerts[alertIndex][1];
+    }, 2400);
+  </script>
 </body>
 </html>
