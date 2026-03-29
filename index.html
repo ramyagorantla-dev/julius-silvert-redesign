@@ -595,6 +595,44 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="productDetailSection" style="display:none; padding-top:0;">
+      <div class="container">
+        <div class="category-header" style="padding:16px 22px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+          <button class="pill" style="background:#eef4ff; color:#22355d; border-color:#d8e3f8;" onclick="backToCatalog()">← Back to Catalog</button>
+          <span class="section-link" id="detailBreadcrumb">Catalog / Product</span>
+        </div>
+
+        <div class="modal-card" style="width:100%; box-shadow:var(--shadow);">
+          <div class="modal-image" id="detailImage"></div>
+          <div class="modal-body">
+            <div class="status-row"><span class="status" id="detailStatus"></span></div>
+            <h2 id="detailName"></h2>
+            <p id="detailDescription"></p>
+            <div class="spec-list">
+              <div class="spec"><strong>Brand</strong><span id="detailBrand"></span></div>
+              <div class="spec"><strong>Item #</strong><span id="detailItem"></span></div>
+              <div class="spec"><strong>Pack Size</strong><span id="detailPack"></span></div>
+              <div class="spec"><strong>Price</strong><span id="detailPrice"></span></div>
+            </div>
+            <div class="modal-actions">
+              <div class="qty" id="detailQtyBox">
+                <button onclick="changeDetailQty(-1)">−</button>
+                <span id="detailQty">1</span>
+                <button onclick="changeDetailQty(1)">+</button>
+              </div>
+              <button class="add" onclick="addCurrentDetailToCart()">Add to Cart</button>
+              <button class="save" onclick="saveCurrentDetailItem()">♡</button>
+            </div>
+            <div class="action-grid" style="grid-template-columns:repeat(3,1fr); margin-top:24px;">
+              <div class="action-card"><strong>Better Quantity</strong><p>Uses real + / − controls instead of hard-to-type manual quantity fields.</p></div>
+              <div class="action-card"><strong>Save for Later</strong><p>Users can move products to saved items and bring them back to cart anytime.</p></div>
+              <div class="action-card"><strong>B2B Clarity</strong><p>Brand, item number, pack size, pricing, and availability are visible on the detail view.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -646,34 +684,6 @@
       <button class="checkout">Proceed to Checkout</button>
     </div>
   </aside>
-
-  <div class="modal" id="productModal">
-    <div class="overlay show" style="position:absolute; inset:0; z-index:-1; background:rgba(10,18,44,.38);"></div>
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-image" id="modalImage"></div>
-      <div class="modal-body">
-        <div class="status-row"><span class="status" id="modalStatus"></span></div>
-        <h2 id="modalName"></h2>
-        <p id="modalDescription"></p>
-        <div class="spec-list">
-          <div class="spec"><strong>Brand</strong><span id="modalBrand"></span></div>
-          <div class="spec"><strong>Item #</strong><span id="modalItem"></span></div>
-          <div class="spec"><strong>Pack Size</strong><span id="modalPack"></span></div>
-          <div class="spec"><strong>Price</strong><span id="modalPrice"></span></div>
-        </div>
-        <div class="modal-actions">
-          <div class="qty" id="modalQtyBox">
-            <button onclick="changeModalQty(-1)">−</button>
-            <span id="modalQty">1</span>
-            <button onclick="changeModalQty(1)">+</button>
-          </div>
-          <button class="add" onclick="addCurrentModalToCart()">Add to Cart</button>
-          <button class="save" onclick="saveCurrentModalItem()">♡</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script>
     const catalog = {
@@ -759,7 +769,7 @@
 
     let currentCategory = "seafood";
     let statusFilter = 'all';
-    let currentModalProduct = null;
+    let currentDetailProduct = null;
 
     const cart = JSON.parse(localStorage.getItem('js_cart') || '[]');
     const saved = JSON.parse(localStorage.getItem('js_saved') || '[]');
@@ -908,24 +918,55 @@
     function openProduct(item) {
       const product = findProductByItem(item);
       if (!product) return;
-      currentModalProduct = product;
-      document.getElementById('modalImage').style.backgroundImage = `url('${product.image}')`;
-      document.getElementById('modalName').textContent = product.name;
-      document.getElementById('modalDescription').textContent = product.desc;
-      document.getElementById('modalBrand').textContent = product.brand;
-      document.getElementById('modalItem').textContent = product.item;
-      document.getElementById('modalPack').textContent = product.pack;
-      document.getElementById('modalPrice').textContent = `$${product.price.toFixed(2)}`;
-      const status = document.getElementById('modalStatus');
+      currentDetailProduct = product;
+      document.getElementById('detailImage').style.backgroundImage = `url('${product.image}')`;
+      document.getElementById('detailName').textContent = product.name;
+      document.getElementById('detailDescription').textContent = product.desc;
+      document.getElementById('detailBrand').textContent = product.brand;
+      document.getElementById('detailItem').textContent = product.item;
+      document.getElementById('detailPack').textContent = product.pack;
+      document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
+      document.getElementById('detailQty').textContent = '1';
+      document.getElementById('detailBreadcrumb').textContent = `${catalog[currentCategory].title} / ${product.name}`;
+      const status = document.getElementById('detailStatus');
       status.textContent = product.status;
       status.className = `status ${product.cls}`;
-      document.getElementById('modalQty').textContent = '1';
-      document.getElementById('productModal').classList.add('show');
+      document.getElementById('productDetailSection').style.display = 'block';
+      document.getElementById('productDetailSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', `#product-${product.item}`);
     }
 
-    function closeModal() {
-      document.getElementById('productModal').classList.remove('show');
-      currentModalProduct = null;
+    function backToCatalog() {
+      document.getElementById('productDetailSection').style.display = 'none';
+      currentDetailProduct = null;
+      history.replaceState(null, '', '#catalog');
+      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function changeDetailQty(delta) {
+      const qty = document.getElementById('detailQty');
+      let value = parseInt(qty.textContent, 10) + delta;
+      if (value < 1) value = 1;
+      qty.textContent = value;
+    }
+
+    function addCurrentDetailToCart() {
+      if (!currentDetailProduct) return;
+      const qty = parseInt(document.getElementById('detailQty').textContent, 10);
+      addItem(cart, currentDetailProduct, qty);
+      const savedIndex = saved.findIndex(s => s.item === currentDetailProduct.item);
+      if (savedIndex > -1) saved.splice(savedIndex, 1);
+      persist();
+      updateDrawerUI();
+      openCart();
+    }
+
+    function saveCurrentDetailItem() {
+      if (!currentDetailProduct) return;
+      addItem(saved, currentDetailProduct, 1);
+      persist();
+      updateDrawerUI();
+      openSaved();
     }
 
     function changeModalQty(delta) {
@@ -935,26 +976,7 @@
       qty.textContent = value;
     }
 
-    function addCurrentModalToCart() {
-      if (!currentModalProduct) return;
-      const qty = parseInt(document.getElementById('modalQty').textContent, 10);
-      addItem(cart, currentModalProduct, qty);
-      const savedIndex = saved.findIndex(s => s.item === currentModalProduct.item);
-      if (savedIndex > -1) saved.splice(savedIndex, 1);
-      persist();
-      updateDrawerUI();
-      closeModal();
-      openCart();
-    }
-
-    function saveCurrentModalItem() {
-      if (!currentModalProduct) return;
-      addItem(saved, currentModalProduct, 1);
-      persist();
-      updateDrawerUI();
-      closeModal();
-      openSaved();
-    }
+    
 
     let activeDrawerTab = 'cart';
 
@@ -1055,7 +1077,6 @@
     function closeAllPanels() {
       document.getElementById("cartDrawer").classList.remove("open");
       document.getElementById("overlay").classList.remove("show");
-      closeModal();
     }
 
     document.getElementById("openCartBtn").addEventListener("click", openCart);
@@ -1081,7 +1102,10 @@
     }, 2400);
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeAllPanels();
+      if (e.key === 'Escape') {
+        document.getElementById("cartDrawer").classList.remove("open");
+        document.getElementById("overlay").classList.remove("show");
+      }
     });
 
     renderProducts(currentCategory);
