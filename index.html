@@ -551,31 +551,13 @@
         <div>
           <span class="kicker">CHEF-CENTRIC B2B REDESIGN</span>
           <h1>Built like a real ordering portal for busy kitchens.</h1>
-          <p>This redesign supports real buying behavior with product discovery, cart actions, save for later, requisition lists, and related product suggestions based on search, category, and cart activity.</p>
+          <p>Premium sourcing platform for professional kitchens with faster ordering, cleaner product discovery, and practical buyer tools.</p>
           <div class="hero-actions">
-            <button class="btn btn-primary" onclick="scrollToCatalog()">Start Order</button>
-            <button class="btn btn-secondary" onclick="openDrawer('requisition')">Open Requisitions</button>
+            <button class="btn btn-primary" onclick="scrollToCatalog()">Browse Catalog</button>
+            <button class="btn btn-secondary" onclick="openDrawer('cart')">Open Cart</button>
           </div>
 
-          <div class="action-grid">
-            <div class="action-card">
-              <strong>Related Products</strong>
-              <p>Searches and cart actions surface relevant items for faster purchasing decisions.</p>
-            </div>
-            <div class="action-card">
-              <strong>Inventory Alerts</strong>
-              <p>Quote-only, low-stock, in-stock, and restocking states are visible before checkout.</p>
-            </div>
-            <div class="action-card">
-              <strong>Requisition Lists</strong>
-              <p>Users can create named purchasing lists and move requisition items to cart later.</p>
-            </div>
-            <div class="action-card">
-              <strong>AI Assistant</strong>
-              <p>A lightweight buying assistant helps users find products and next actions quickly.</p>
-            </div>
           </div>
-        </div>
 
         <div class="dashboard">
           <div class="dash-head">
@@ -729,7 +711,7 @@
     </div>
     <div class="chatbot-body">
       <div class="chat-messages" id="chatMessages">
-        <div class="chat-msg bot">Hi! I can help you find products, show related items, and explain cart, save-for-later, or requisition actions.</div>
+        <div class="chat-msg bot">Hi! I can help with products, cart actions, requisitions, and support.</div>
       </div>
       <div class="chat-input-row">
         <input id="chatInput" type="text" placeholder="Ask for product help..." />
@@ -1332,20 +1314,30 @@
       if (!text) return;
       addChatMessage(text, 'user');
       const lower = text.toLowerCase();
-      let reply = 'Try searching for a product, opening a category, or asking about cart, saved items, or requisitions.';
+      let reply = 'I could not find a direct answer for that. You can contact support at ramyagorantla2001@gmail.com or click the support link below.';
 
-      if (lower.includes('cart')) reply = 'You can add items directly from the catalog or product detail page. The cart drawer also shows quantity updates and related next steps.';
+      if (lower.includes('cart')) reply = 'You can add items directly from the catalog or product detail page. The cart drawer also supports quantity updates.';
       else if (lower.includes('save')) reply = 'Use the heart button to save items for later. Saved items can be moved back to cart any time.';
-      else if (lower.includes('requisition')) reply = 'Use the Req button to create or add to a requisition list. Requisition items can later be moved into cart for checkout.';
-      else if (lower.includes('related')) reply = 'Related products appear when you search, open a product, or add an item to cart. They are based on category, tags, brand, and product similarity.';
-      else {
+      else if (lower.includes('requisition')) reply = 'Use the Req button to create or add to a requisition list. Requisition items can later be moved into cart.';
+      else if (lower.includes('related')) reply = 'Related products appear when you search, open a product, or add an item to cart.';
+      else if (lower.includes('support') || lower.includes('contact') || lower.includes('help')) {
+        reply = 'Please contact support at ramyagorantla2001@gmail.com.';
+      } else {
         const found = allProducts.find(p => [p.name, p.brand, ...(p.tags || [])].join(' ').toLowerCase().includes(lower));
         if (found) {
-          reply = `I found ${found.name}. I opened the product detail so you can add it to cart or view related items.`;
+          reply = `I found ${found.name}. I opened the product detail so you can review it.`;
           openProduct(found.item);
         }
       }
       addChatMessage(reply, 'bot');
+      if (!allProducts.find(p => [p.name, p.brand, ...(p.tags || [])].join(' ').toLowerCase().includes(lower)) && !(lower.includes('cart') || lower.includes('save') || lower.includes('requisition') || lower.includes('related') || lower.includes('support') || lower.includes('contact') || lower.includes('help'))) {
+        const messages = document.getElementById('chatMessages');
+        const linkWrap = document.createElement('div');
+        linkWrap.className = 'chat-msg bot';
+        linkWrap.innerHTML = 'Need help? <a href="mailto:ramyagorantla2001@gmail.com" style="color:#274692; font-weight:700;">Chat with support</a>';
+        messages.appendChild(linkWrap);
+        messages.scrollTop = messages.scrollHeight;
+      }
       input.value = '';
     }
 
