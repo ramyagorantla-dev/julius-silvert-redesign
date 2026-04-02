@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julius Silvert Redesign | Chef-Centric B2B Ordering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     :root{
@@ -26,19 +29,21 @@
       --warn-bg:#fff5df;
       --info:#3554b6;
       --info-bg:#e8eeff;
+      --teal:#0d7c86;
+      --teal-bg:#e8fbfd;
     }
 
     html { scroll-behavior: smooth; }
     body{
       margin:0;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:'Inter', Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
         radial-gradient(circle at top left, rgba(205,164,91,.12), transparent 20%),
         linear-gradient(180deg, #eef3f9 0%, #f8fafc 100%);
     }
     a{ text-decoration:none; color:inherit; }
-    button { font-family: inherit; }
+    button, input { font-family: inherit; }
     .container{ width:min(1240px, calc(100% - 40px)); margin:0 auto; }
 
     .announce{
@@ -56,12 +61,12 @@
     .topbar{ background:rgba(13,23,55,.98); padding:16px 0; }
     .topbar-inner{
       display:grid;
-      grid-template-columns:230px 1fr 260px;
+      grid-template-columns:230px 1fr 360px;
       gap:18px;
       align-items:center;
     }
     .logo{ color:#fff; display:flex; flex-direction:column; line-height:1; cursor:pointer; }
-    .logo-main{ font-size:30px; font-weight:700; letter-spacing:-.04em; }
+    .logo-main{ font-size:30px; font-weight:800; letter-spacing:-.04em; }
     .logo-main span{ font-weight:300; margin-left:2px; }
     .logo-sub{
       margin-top:6px; font-size:11px; text-transform:uppercase;
@@ -81,7 +86,7 @@
     }
 
     .top-actions{
-      display:flex; justify-content:flex-end; gap:12px; align-items:center; color:#fff; flex-wrap:wrap;
+      display:flex; justify-content:flex-end; gap:10px; align-items:center; color:#fff; flex-wrap:wrap;
     }
     .pill{
       border:1px solid rgba(255,255,255,.15);
@@ -89,8 +94,9 @@
       padding:10px 14px; border-radius:999px; font-size:14px;
       display:inline-flex; align-items:center; gap:8px; cursor:pointer;
       color:#fff;
+      transition:.18s ease;
     }
-    .pill:hover{ background:rgba(255,255,255,.14); }
+    .pill:hover{ background:rgba(255,255,255,.14); transform: translateY(-1px); }
     .cart-count{
       min-width:22px; height:22px; border-radius:50%;
       background:#fff; color:var(--navy);
@@ -156,7 +162,9 @@
     .btn{
       border:none; cursor:pointer; border-radius:999px;
       padding:14px 22px; font-weight:700; font-size:15px;
+      transition:.18s ease;
     }
+    .btn:hover { transform:translateY(-1px); }
     .btn-primary{
       background:linear-gradient(135deg, var(--gold), #f2d396);
       color:#1b2235;
@@ -194,6 +202,7 @@
     .low-stock{ background:var(--warn-bg); color:var(--warn); border:1px solid #f3dfb1; }
     .quote-only{ background:#eef2f7; color:#44516c; border:1px solid #dfe6ef; }
     .restock{ background:var(--info-bg); color:var(--info); border:1px solid #d3ddff; }
+    .requisition-tag{ background:var(--teal-bg); color:var(--teal); border:1px solid #c8f2f6; }
 
     .section{ padding:42px 0; }
     .section-head{
@@ -263,7 +272,7 @@
       line-height:1.7;
     }
 
-    .product-grid{
+    .product-grid, .related-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:20px;
@@ -330,7 +339,7 @@
       font-weight:700;
     }
     .buy-row{
-      display:flex; gap:10px; align-items:center; margin-top:18px;
+      display:flex; gap:10px; align-items:center; margin-top:18px; flex-wrap:wrap;
     }
     .qty{
       display:flex; align-items:center; border:1px solid var(--line); border-radius:14px; overflow:hidden;
@@ -345,11 +354,13 @@
     .add{
       flex:1; border:none; height:44px; border-radius:14px;
       background:var(--navy); color:#fff; font-weight:700; cursor:pointer;
+      min-width:120px;
     }
-    .save{
-      border:none; height:44px; min-width:44px; border-radius:14px;
+    .save, .req{
+      border:none; height:44px; min-width:54px; border-radius:14px;
       background:#eef3f8; color:#243454; font-weight:700; cursor:pointer;
     }
+    .req { background:var(--teal-bg); color:var(--teal); }
 
     .footer{
       margin-top:24px;
@@ -367,7 +378,7 @@
     .footer a{ display:block; margin-bottom:8px; }
 
     .drawer{
-      position:fixed; top:0; right:-420px; width:400px; max-width:100%;
+      position:fixed; top:0; right:-440px; width:420px; max-width:100%;
       height:100vh; background:#fff; box-shadow:-10px 0 30px rgba(0,0,0,.12);
       z-index:100; transition:.28s ease; display:flex; flex-direction:column;
     }
@@ -382,7 +393,7 @@
     }
     .drawer-tabs{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:1fr 1fr 1fr;
       gap:0;
       border-bottom:1px solid var(--line);
     }
@@ -402,6 +413,7 @@
     .item-card p{ margin:0; color:var(--muted); font-size:14px; }
     .item-row{
       display:flex; justify-content:space-between; align-items:center; margin-top:10px; gap:10px;
+      flex-wrap:wrap;
     }
     .remove-btn{
       border:none; background:var(--danger-bg); color:var(--danger); padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:700;
@@ -427,51 +439,67 @@
     }
     .overlay.show{ opacity:1; visibility:visible; }
 
-    .modal {
-      position: fixed; inset: 0; display: grid; place-items: center; padding: 24px;
-      opacity: 0; visibility: hidden; transition: .22s ease; z-index: 110;
-    }
-    .modal.show { opacity: 1; visibility: visible; }
-    .modal-card {
-      width: min(980px, 100%);
-      background:#fff; border-radius:28px; overflow:hidden; box-shadow:0 28px 80px rgba(12,20,49,.25);
-      display:grid; grid-template-columns: 1fr 1fr;
-    }
-    .modal-image { min-height: 420px; background-size:cover; background-position:center; }
-    .modal-body { padding:28px; }
-    .modal-body h2 { margin:0; font-size:36px; line-height:1.08; letter-spacing:-.04em; }
-    .modal-body p { color:var(--muted); line-height:1.8; }
+    .detail-section { padding-top:0; display:none; }
+    .detail-layout { display:grid; grid-template-columns:1.05fr .95fr; gap:20px; }
+    .detail-image { min-height:420px; background-size:cover; background-position:center; border-radius:28px; box-shadow:var(--shadow); }
+    .detail-card { background:#fff; border-radius:28px; box-shadow:var(--shadow); padding:28px; }
     .spec-list { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
     .spec { background:#f6f9fd; border:1px solid #e8eef7; border-radius:16px; padding:14px; }
     .spec strong { display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#6f7c95; margin-bottom:6px; }
-    .modal-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:20px; }
-    .modal-close {
-      position:absolute; right:18px; top:18px; width:42px; height:42px; border:none; border-radius:12px; background:#edf2f8; cursor:pointer;
+    .detail-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; }
+    .detail-card h2 { margin:10px 0 14px; font-size:42px; line-height:1.05; letter-spacing:-.04em; }
+    .detail-card p { color:var(--muted); line-height:1.8; }
+    .related-section { margin-top:28px; }
+    .related-section h3 { margin:0 0 16px; font-size:28px; }
+
+    .chatbot {
+      position:fixed; right:18px; bottom:18px; width:330px; z-index:120;
+      box-shadow:0 24px 60px rgba(10,18,44,.22); border-radius:18px; overflow:hidden;
     }
+    .chatbot-head {
+      background:linear-gradient(135deg, var(--navy), #1c2f68);
+      color:#fff; padding:14px 16px; font-weight:700; cursor:pointer;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .chatbot-body { background:#fff; display:none; height:380px; flex-direction:column; }
+    .chatbot.open .chatbot-body { display:flex; }
+    .chat-messages { flex:1; overflow:auto; padding:14px; background:#fbfcff; }
+    .chat-msg { margin-bottom:12px; padding:10px 12px; border-radius:14px; max-width:88%; line-height:1.6; }
+    .chat-msg.user { margin-left:auto; background:#e9efff; color:#203f8c; }
+    .chat-msg.bot { background:#f0f4f8; color:#31425e; }
+    .chat-input-row { display:flex; gap:8px; padding:12px; border-top:1px solid #edf2f7; }
+    .chat-input-row input { flex:1; border:1px solid #dce5f1; border-radius:12px; padding:12px; }
+    .chat-input-row button { border:none; border-radius:12px; background:var(--navy); color:#fff; padding:0 16px; cursor:pointer; }
+
+    .toast {
+      position:fixed; bottom:24px; left:24px; background:#12234a; color:#fff; padding:12px 16px; border-radius:14px;
+      box-shadow:var(--shadow); opacity:0; transform:translateY(12px); transition:.22s ease; z-index:140;
+    }
+    .toast.show { opacity:1; transform:translateY(0); }
 
     .empty-state{ color:#66748f; line-height:1.7; }
 
     @media (max-width:1100px){
       .topbar-inner{ grid-template-columns:1fr; }
       .top-actions{ justify-content:flex-start; }
-      .hero-grid, .product-grid, .footer-grid, .action-grid, .modal-card{
+      .hero-grid, .product-grid, .related-grid, .footer-grid, .action-grid, .detail-layout{
         grid-template-columns:1fr 1fr;
       }
       .catalog-layout{ grid-template-columns:1fr; }
       .sidebar{ position:static; }
-      .modal-card { grid-template-columns: 1fr; }
-      .modal-image { min-height: 300px; }
+      .detail-image { min-height:320px; }
     }
     @media (max-width:760px){
       .container{ width:min(100% - 28px, 1240px); }
       .announce .container, .section-head{ flex-direction:column; align-items:flex-start; }
-      .hero-grid, .product-grid, .footer-grid, .action-grid{
+      .hero-grid, .product-grid, .related-grid, .footer-grid, .action-grid, .detail-layout{
         grid-template-columns:1fr;
       }
       .hero h1{ font-size:40px; }
       .nav-row{ gap:18px; }
       .drawer{ width:100%; }
       .spec-list { grid-template-columns:1fr; }
+      .chatbot { width: calc(100% - 24px); right:12px; left:12px; }
     }
   </style>
 </head>
@@ -479,7 +507,7 @@
   <div class="announce">
     <div class="container">
       <span>Chef-Centric B2B Ordering Redesign</span>
-      <span>Cleaner catalog • Save for later • Real cart behavior</span>
+      <span>Related products • Requisition lists • Save for later • AI assistant</span>
     </div>
   </div>
 
@@ -498,8 +526,9 @@
 
         <div class="top-actions">
           <button class="pill" onclick="scrollToCatalog()">Catalog</button>
-          <button class="pill" onclick="openSaved()"><span class="cart-count" id="savedCount">0</span>Saved</button>
-          <button class="pill" id="openCartBtn"><span class="cart-count" id="cartCount">0</span>Cart</button>
+          <button class="pill" onclick="openDrawer('requisition')"><span class="cart-count" id="reqCount">0</span>Requisitions</button>
+          <button class="pill" onclick="openDrawer('saved')"><span class="cart-count" id="savedCount">0</span>Saved</button>
+          <button class="pill" onclick="openDrawer('cart')"><span class="cart-count" id="cartCount">0</span>Cart</button>
         </div>
       </div>
     </div>
@@ -522,28 +551,28 @@
         <div>
           <span class="kicker">CHEF-CENTRIC B2B REDESIGN</span>
           <h1>Built like a real ordering portal for busy kitchens.</h1>
-          <p>This concept redesign focuses on the real workflow Julius Silvert buyers need: clean product discovery, clear pack-size pricing, live inventory states, quick add-to-cart behavior, and a true save-for-later flow.</p>
+          <p>This redesign supports real buying behavior with product discovery, cart actions, save for later, requisition lists, and related product suggestions based on search, category, and cart activity.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" onclick="scrollToCatalog()">Start Order</button>
-            <button class="btn btn-secondary" onclick="openSaved()">Open Saved Items</button>
+            <button class="btn btn-secondary" onclick="openDrawer('requisition')">Open Requisitions</button>
           </div>
 
           <div class="action-grid">
             <div class="action-card">
-              <strong>Quick Reorder</strong>
-              <p>Designed for repeat B2B purchasing with fewer clicks and faster item management.</p>
+              <strong>Related Products</strong>
+              <p>Searches and cart actions surface relevant items for faster purchasing decisions.</p>
             </div>
             <div class="action-card">
               <strong>Inventory Alerts</strong>
               <p>Quote-only, low-stock, in-stock, and restocking states are visible before checkout.</p>
             </div>
             <div class="action-card">
-              <strong>Better Quantity UI</strong>
-              <p>Users can add or reduce quantities with clear + / − controls instead of manual-only typing.</p>
+              <strong>Requisition Lists</strong>
+              <p>Users can create named purchasing lists and move requisition items to cart later.</p>
             </div>
             <div class="action-card">
-              <strong>Save for Later</strong>
-              <p>Products can move between active cart and saved list without forcing users to search again.</p>
+              <strong>AI Assistant</strong>
+              <p>A lightweight buying assistant helps users find products and next actions quickly.</p>
             </div>
           </div>
         </div>
@@ -596,16 +625,16 @@
       </div>
     </section>
 
-    <section class="section" id="productDetailSection" style="display:none; padding-top:0;">
+    <section class="section detail-section" id="productDetailSection">
       <div class="container">
         <div class="category-header" style="padding:16px 22px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
           <button class="pill" style="background:#eef4ff; color:#22355d; border-color:#d8e3f8;" onclick="backToCatalog()">← Back to Catalog</button>
           <span class="section-link" id="detailBreadcrumb">Catalog / Product</span>
         </div>
 
-        <div class="modal-card" style="width:100%; box-shadow:var(--shadow);">
-          <div class="modal-image" id="detailImage"></div>
-          <div class="modal-body">
+        <div class="detail-layout">
+          <div class="detail-image" id="detailImage"></div>
+          <div class="detail-card">
             <div class="status-row"><span class="status" id="detailStatus"></span></div>
             <h2 id="detailName"></h2>
             <p id="detailDescription"></p>
@@ -615,21 +644,28 @@
               <div class="spec"><strong>Pack Size</strong><span id="detailPack"></span></div>
               <div class="spec"><strong>Price</strong><span id="detailPrice"></span></div>
             </div>
-            <div class="modal-actions">
-              <div class="qty" id="detailQtyBox">
+            <div class="detail-actions">
+              <div class="qty">
                 <button onclick="changeDetailQty(-1)">−</button>
                 <span id="detailQty">1</span>
                 <button onclick="changeDetailQty(1)">+</button>
               </div>
               <button class="add" onclick="addCurrentDetailToCart()">Add to Cart</button>
               <button class="save" onclick="saveCurrentDetailItem()">♡</button>
-            </div>
-            <div class="action-grid" style="grid-template-columns:repeat(3,1fr); margin-top:24px;">
-              <div class="action-card"><strong>Better Quantity</strong><p>Uses real + / − controls instead of hard-to-type manual quantity fields.</p></div>
-              <div class="action-card"><strong>Save for Later</strong><p>Users can move products to saved items and bring them back to cart anytime.</p></div>
-              <div class="action-card"><strong>B2B Clarity</strong><p>Brand, item number, pack size, pricing, and availability are visible on the detail view.</p></div>
+              <button class="req" onclick="addCurrentDetailToRequisition()">Req</button>
             </div>
           </div>
+        </div>
+
+        <div class="related-section">
+          <div class="section-head" style="margin-top:28px;">
+            <div>
+              <span class="kicker" style="color:#7b879e">SMART SUGGESTIONS</span>
+              <h2 style="font-size:34px;">Related Products</h2>
+            </div>
+            <span class="section-link" id="relatedReason">Based on this product</span>
+          </div>
+          <div class="related-grid" id="relatedGrid"></div>
         </div>
       </div>
     </section>
@@ -642,19 +678,19 @@
           <span class="logo-main">Julius<span>Silvert</span></span>
           <span class="logo-sub">Chef-Centric Redesign Concept</span>
         </div>
-        <p>Premium sourcing experience for professional kitchens, redesigned to be cleaner, faster, and more category-aware.</p>
+        <p>Premium sourcing experience for professional kitchens, redesigned to be cleaner, faster, more category-aware, and more aligned with real B2B purchasing workflows.</p>
       </div>
       <div>
         <h4>Ordering</h4>
         <a href="#catalog">Browse Catalog</a>
-        <a href="#catalog">Category Shopping</a>
-        <a href="#home">Homepage Vision</a>
+        <a href="javascript:void(0)" onclick="openDrawer('cart')">Cart</a>
+        <a href="javascript:void(0)" onclick="openDrawer('saved')">Saved</a>
       </div>
       <div>
-        <h4>Support</h4>
-        <a href="javascript:void(0)" onclick="openSaved()">Saved Items</a>
-        <a href="javascript:void(0)" onclick="openCart()">Cart</a>
+        <h4>Planning</h4>
+        <a href="javascript:void(0)" onclick="openDrawer('requisition')">Requisition Lists</a>
         <a href="#home">Inventory Alerts</a>
+        <a href="#home">AI Assistant</a>
       </div>
       <div>
         <h4>Project</h4>
@@ -666,14 +702,15 @@
 
   <div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
 
-  <aside class="drawer" id="cartDrawer">
+  <aside class="drawer" id="drawerPanel">
     <div class="drawer-head">
-      <h3>Your Order</h3>
+      <h3>Your Workspace</h3>
       <button class="drawer-close" onclick="closeAllPanels()">✕</button>
     </div>
     <div class="drawer-tabs">
-      <button class="drawer-tab active" id="cartTabBtn" onclick="switchDrawerTab('cart')">Cart</button>
-      <button class="drawer-tab" id="savedTabBtn" onclick="switchDrawerTab('saved')">Save for Later</button>
+      <button class="drawer-tab active" id="cartTabBtn" onclick="openDrawer('cart')">Cart</button>
+      <button class="drawer-tab" id="savedTabBtn" onclick="openDrawer('saved')">Saved</button>
+      <button class="drawer-tab" id="reqTabBtn" onclick="openDrawer('requisition')">Requisitions</button>
     </div>
     <div class="drawer-items" id="drawerItems"></div>
     <div class="drawer-foot">
@@ -685,6 +722,24 @@
     </div>
   </aside>
 
+  <div class="chatbot" id="chatbot">
+    <div class="chatbot-head" onclick="toggleChatbot()">
+      <span>Chef Assistant</span>
+      <span>🤖</span>
+    </div>
+    <div class="chatbot-body">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot">Hi! I can help you find products, show related items, and explain cart, save-for-later, or requisition actions.</div>
+      </div>
+      <div class="chat-input-row">
+        <input id="chatInput" type="text" placeholder="Ask for product help..." />
+        <button onclick="sendChat()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
   <script>
     const catalog = {
       seafood: {
@@ -692,12 +747,12 @@
         subtitle: "Chef-selected seafood essentials",
         description: "Fresh and frozen fish, shellfish, and premium proteins for modern kitchens.",
         products: [
-          {name:"Atlantic Salmon Portions", brand:"PACKER", item:"5400210", price:128.50, pack:"1 x 10lb", status:"In Stock", cls:"in-stock", desc:"Premium salmon portions prepared for consistent B2B kitchen ordering and clear pack-size visibility.", image:"https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=900&q=80"},
-          {name:"U-10 Dry Pack Scallops", brand:"FISHERKING SEAFOODS", item:"5482104", price:156.00, pack:"2 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Large dry-pack scallops with a low-stock alert to help chefs plan substitutions early.", image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"},
-          {name:"Tail-Off IQF Shrimp 16/20", brand:"AMERICANPR", item:"5330205", price:89.75, pack:"5 x 2lb", status:"In Stock", cls:"in-stock", desc:"Consistent frozen shrimp with quick add-to-cart ordering for repeat buyers.", image:"https://images.unsplash.com/photo-1625944525533-473f1a3d54b8?auto=format&fit=crop&w=900&q=80"},
-          {name:"Spanish Octopus 4/6lb", brand:"OCTOFINO", item:"5509007", price:149.00, pack:"1 x 32lb", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium seafood item with a clearer workflow than unclear market-price buttons.", image:"https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=900&q=80"},
-          {name:"Cape Hake Fillet IQF", brand:"PANAPESCA", item:"5447014", price:64.10, pack:"5 x 2lb", status:"Restocking Soon", cls:"restock", desc:"Restocking indicator helps buyers understand availability before reaching cart or checkout.", image:"https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80"},
-          {name:"Lobster Claw & Knuckle Meat", brand:"FISHERKING SEAFOODS", item:"5474006", price:143.79, pack:"6 x 2lb", status:"In Stock", cls:"in-stock", desc:"High-value seafood with clear price, pack size, and direct cart interaction.", image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80"}
+          {name:"Atlantic Salmon Portions", brand:"PACKER", item:"5400210", price:128.50, pack:"1 x 10lb", status:"In Stock", cls:"in-stock", desc:"Premium salmon portions prepared for consistent B2B kitchen ordering and clear pack-size visibility.", image:"https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=900&q=80", tags:["seafood","salmon","fish","protein"]},
+          {name:"U-10 Dry Pack Scallops", brand:"FISHERKING SEAFOODS", item:"5482104", price:156.00, pack:"2 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Large dry-pack scallops with a low-stock alert to help chefs plan substitutions early.", image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80", tags:["seafood","scallops","shellfish"]},
+          {name:"Tail-Off IQF Shrimp 16/20", brand:"AMERICANPR", item:"5330205", price:89.75, pack:"5 x 2lb", status:"In Stock", cls:"in-stock", desc:"Consistent frozen shrimp with quick add-to-cart ordering for repeat buyers.", image:"https://images.unsplash.com/photo-1625944525533-473f1a3d54b8?auto=format&fit=crop&w=900&q=80", tags:["seafood","shrimp","shellfish"]},
+          {name:"Spanish Octopus 4/6lb", brand:"OCTOFINO", item:"5509007", price:149.00, pack:"1 x 32lb", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium seafood item with a clearer workflow than unclear market-price buttons.", image:"https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=900&q=80", tags:["seafood","octopus","premium"]},
+          {name:"Cape Hake Fillet IQF", brand:"PANAPESCA", item:"5447014", price:64.10, pack:"5 x 2lb", status:"Restocking Soon", cls:"restock", desc:"Restocking indicator helps buyers understand availability before reaching cart or checkout.", image:"https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80", tags:["seafood","fish","fillet"]},
+          {name:"Lobster Claw & Knuckle Meat", brand:"FISHERKING SEAFOODS", item:"5474006", price:143.79, pack:"6 x 2lb", status:"In Stock", cls:"in-stock", desc:"High-value seafood with clear price, pack size, and direct cart interaction.", image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80", tags:["seafood","lobster","premium"]}
         ]
       },
       produce: {
@@ -705,12 +760,12 @@
         subtitle: "Seasonal produce and chef staples",
         description: "Fresh greens, herbs, citrus, mushrooms, and specialty vegetables for service-ready prep.",
         products: [
-          {name:"Microgreens Assortment", brand:"PACKER", item:"4900538", price:39.50, pack:"1 x 12ct", status:"Low Stock", cls:"low-stock", desc:"Microgreens with low-stock messaging for faster menu planning and substitution decisions.", image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"},
-          {name:"Fresh Black Winter Truffles", brand:"URBANI", item:"7756405", price:245.00, pack:"1 x 4oz", status:"Request Quote", cls:"quote-only", desc:"Premium produce item where quote flow is intentionally separated from normal add-to-cart logic.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80"},
-          {name:"Blood Oranges", brand:"PACKER", item:"4900111", price:41.50, pack:"1 x 54ct", status:"In Stock", cls:"in-stock", desc:"Citrus product displayed with cleaner card structure and pack-size clarity.", image:"https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=900&q=80"},
-          {name:"Asian Pears", brand:"PACKER", item:"4900221", price:68.00, pack:"1 x 24ct", status:"In Stock", cls:"in-stock", desc:"Fresh produce example showing improved item differentiation and buyer-focused catalog presentation.", image:"https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=900&q=80"},
-          {name:"Mushroom Mix", brand:"PACKER", item:"4834000", price:58.20, pack:"1 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Mixed mushrooms with clear alert state and easier add-to-cart experience.", image:"https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=900&q=80"},
-          {name:"Limes", brand:"PACKER", item:"4900144", price:81.50, pack:"1 x 175ct", status:"In Stock", cls:"in-stock", desc:"Bulk produce item displayed in a cleaner B2B card format.", image:"https://images.unsplash.com/photo-1582284540020-8acbe03f4924?auto=format&fit=crop&w=900&q=80"}
+          {name:"Microgreens Assortment", brand:"PACKER", item:"4900538", price:39.50, pack:"1 x 12ct", status:"Low Stock", cls:"low-stock", desc:"Microgreens with low-stock messaging for faster menu planning and substitution decisions.", image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80", tags:["produce","greens","microgreens"]},
+          {name:"Fresh Black Winter Truffles", brand:"URBANI", item:"7756405", price:245.00, pack:"1 x 4oz", status:"Request Quote", cls:"quote-only", desc:"Premium produce item where quote flow is intentionally separated from normal add-to-cart logic.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80", tags:["produce","truffles","premium"]},
+          {name:"Blood Oranges", brand:"PACKER", item:"4900111", price:41.50, pack:"1 x 54ct", status:"In Stock", cls:"in-stock", desc:"Citrus product displayed with cleaner card structure and pack-size clarity.", image:"https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","citrus"]},
+          {name:"Asian Pears", brand:"PACKER", item:"4900221", price:68.00, pack:"1 x 24ct", status:"In Stock", cls:"in-stock", desc:"Fresh produce example showing improved item differentiation and buyer-focused catalog presentation.", image:"https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","pears"]},
+          {name:"Mushroom Mix", brand:"PACKER", item:"4834000", price:58.20, pack:"1 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Mixed mushrooms with clear alert state and easier add-to-cart experience.", image:"https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=900&q=80", tags:["produce","mushrooms"]},
+          {name:"Limes", brand:"PACKER", item:"4900144", price:81.50, pack:"1 x 175ct", status:"In Stock", cls:"in-stock", desc:"Bulk produce item displayed in a cleaner B2B card format.", image:"https://images.unsplash.com/photo-1582284540020-8acbe03f4924?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","citrus"]}
         ]
       },
       frozen: {
@@ -718,12 +773,12 @@
         subtitle: "Fast-moving frozen inventory",
         description: "Seafood, vegetables, desserts, bakery, and ready-to-bake products with clear status messaging.",
         products: [
-          {name:"Artisan Brioche Rolls", brand:"MARTIN'S FAMOUS", item:"5872600", price:28.25, pack:"6 x 8ct", status:"In Stock", cls:"in-stock", desc:"Bakery item designed to show catalog consistency and quick repeat-order interactions.", image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80"},
-          {name:"Chocolate Gelato", brand:"LONGFORD'S", item:"8920110", price:61.38, pack:"1 x 5qt", status:"In Stock", cls:"in-stock", desc:"Frozen dessert with clear pack-size visibility and direct add-to-cart flow.", image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80"},
-          {name:"Tater Tot Puffs", brand:"LAMBWESTON", item:"8712007", price:89.62, pack:"6 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Bulk frozen side with low-stock indication.", image:"https://images.unsplash.com/photo-1639744092480-7d5d6e27bb1e?auto=format&fit=crop&w=900&q=80"},
-          {name:"Spinach & Feta Danishes", brand:"DUFOUR GOURMET", item:"6078004", price:128.84, pack:"1 x 112ct", status:"Restocking Soon", cls:"restock", desc:"Restocking state improves visibility before ordering decisions are made.", image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80"},
-          {name:"Frozen Mirepoix Mix", brand:"ARTICGARDE", item:"4555004", price:55.27, pack:"6 x 4.4lb", status:"In Stock", cls:"in-stock", desc:"Back-of-house prep item displayed in a cleaner product layout.", image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"},
-          {name:"Diced Mango", brand:"PACKER", item:"4555003", price:38.42, pack:"2 x 5lb", status:"Request Quote", cls:"quote-only", desc:"Shows how quote-required frozen products can be handled more clearly.", image:"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=80"}
+          {name:"Artisan Brioche Rolls", brand:"MARTIN'S FAMOUS", item:"5872600", price:28.25, pack:"6 x 8ct", status:"In Stock", cls:"in-stock", desc:"Bakery item designed to show catalog consistency and quick repeat-order interactions.", image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80", tags:["frozen","bakery","bread"]},
+          {name:"Chocolate Gelato", brand:"LONGFORD'S", item:"8920110", price:61.38, pack:"1 x 5qt", status:"In Stock", cls:"in-stock", desc:"Frozen dessert with clear pack-size visibility and direct add-to-cart flow.", image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80", tags:["frozen","dessert","gelato"]},
+          {name:"Tater Tot Puffs", brand:"LAMBWESTON", item:"8712007", price:89.62, pack:"6 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Bulk frozen side with low-stock indication.", image:"https://images.unsplash.com/photo-1639744092480-7d5d6e27bb1e?auto=format&fit=crop&w=900&q=80", tags:["frozen","sides","potato"]},
+          {name:"Spinach & Feta Danishes", brand:"DUFOUR GOURMET", item:"6078004", price:128.84, pack:"1 x 112ct", status:"Restocking Soon", cls:"restock", desc:"Restocking state improves visibility before ordering decisions are made.", image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80", tags:["frozen","bakery","pastry"]},
+          {name:"Frozen Mirepoix Mix", brand:"ARTICGARDE", item:"4555004", price:55.27, pack:"6 x 4.4lb", status:"In Stock", cls:"in-stock", desc:"Back-of-house prep item displayed in a cleaner product layout.", image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80", tags:["frozen","vegetables","prep"]},
+          {name:"Diced Mango", brand:"PACKER", item:"4555003", price:38.42, pack:"2 x 5lb", status:"Request Quote", cls:"quote-only", desc:"Shows how quote-required frozen products can be handled more clearly.", image:"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=80", tags:["frozen","fruit","mango"]}
         ]
       },
       cheese: {
@@ -731,12 +786,12 @@
         subtitle: "Premium cheese and board-ready selections",
         description: "Imported cheeses, cured meats, soft cheeses, and chef-selected charcuterie essentials.",
         products: [
-          {name:"Parmigiano Reggiano Wheel", brand:"ITALIAN IMPORTS", item:"2100441", price:299.00, pack:"1 x 72lb", status:"In Stock", cls:"in-stock", desc:"Large-format imported cheese with account-oriented B2B visibility.", image:"https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80"},
-          {name:"Fresh Burrata", brand:"BELGIOIOSO", item:"2101098", price:42.75, pack:"8 x 2ct", status:"Low Stock", cls:"low-stock", desc:"Premium fresh cheese with clearer availability guidance.", image:"https://images.unsplash.com/photo-1626201850125-a96f2600eeae?auto=format&fit=crop&w=900&q=80"},
-          {name:"Prosciutto di Parma", brand:"PARMA RESERVE", item:"2103033", price:189.50, pack:"1 x 14lb", status:"In Stock", cls:"in-stock", desc:"Charcuterie item displayed with better product hierarchy and clean actions.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"},
-          {name:"Triple Cream Brie", brand:"FROMAGERIE", item:"2102201", price:58.20, pack:"2 x 3kg", status:"In Stock", cls:"in-stock", desc:"Imported cheese showcased in a premium product-detail flow.", image:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80"},
-          {name:"Spanish Manchego", brand:"IBERIA FOODS", item:"2105112", price:74.40, pack:"1 x 12lb", status:"Restocking Soon", cls:"restock", desc:"Restocking alerts reduce buyer uncertainty during ordering.", image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80"},
-          {name:"Soppressata Piccante", brand:"SALUMI", item:"2106007", price:67.90, pack:"12 x 8oz", status:"In Stock", cls:"in-stock", desc:"Better organization for premium cheese and cured meat browsing.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"}
+          {name:"Parmigiano Reggiano Wheel", brand:"ITALIAN IMPORTS", item:"2100441", price:299.00, pack:"1 x 72lb", status:"In Stock", cls:"in-stock", desc:"Large-format imported cheese with account-oriented B2B visibility.", image:"https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80", tags:["cheese","imported","parmigiano"]},
+          {name:"Fresh Burrata", brand:"BELGIOIOSO", item:"2101098", price:42.75, pack:"8 x 2ct", status:"Low Stock", cls:"low-stock", desc:"Premium fresh cheese with clearer availability guidance.", image:"https://images.unsplash.com/photo-1626201850125-a96f2600eeae?auto=format&fit=crop&w=900&q=80", tags:["cheese","fresh","burrata"]},
+          {name:"Prosciutto di Parma", brand:"PARMA RESERVE", item:"2103033", price:189.50, pack:"1 x 14lb", status:"In Stock", cls:"in-stock", desc:"Charcuterie item displayed with better product hierarchy and clean actions.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", tags:["charcuterie","prosciutto","imported"]},
+          {name:"Triple Cream Brie", brand:"FROMAGERIE", item:"2102201", price:58.20, pack:"2 x 3kg", status:"In Stock", cls:"in-stock", desc:"Imported cheese showcased in a premium product-detail flow.", image:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80", tags:["cheese","brie","soft cheese"]},
+          {name:"Spanish Manchego", brand:"IBERIA FOODS", item:"2105112", price:74.40, pack:"1 x 12lb", status:"Restocking Soon", cls:"restock", desc:"Restocking alerts reduce buyer uncertainty during ordering.", image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80", tags:["cheese","manchego","imported"]},
+          {name:"Soppressata Piccante", brand:"SALUMI", item:"2106007", price:67.90, pack:"12 x 8oz", status:"In Stock", cls:"in-stock", desc:"Better organization for premium cheese and cured meat browsing.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80", tags:["charcuterie","salumi","spicy"]}
         ]
       },
       meat: {
@@ -744,12 +799,12 @@
         subtitle: "Center-of-plate proteins",
         description: "Premium beef, pork, lamb, and poultry selections for chef-driven kitchens.",
         products: [
-          {name:"Chef Ready Tenderloin", brand:"COMPART", item:"1816666", price:189.75, pack:"2 x 5lb", status:"Restocking Soon", cls:"restock", desc:"High-value protein with clear status indicators and simplified item actions.", image:"https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=80"},
-          {name:"Ground Lamb", brand:"PACKER", item:"1740201", price:95.20, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Protein item displayed in a cleaner, more professional B2B card layout.", image:"https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=80"},
-          {name:"Bone-In Short Rib", brand:"PACKER", item:"1740321", price:144.00, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Bulk protein with clear pack-size and direct quantity adjustment.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"},
-          {name:"Air-Chilled Chicken Supreme", brand:"FARMHOUSE", item:"1740880", price:72.10, pack:"4 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Low stock state helps buyers act faster before checkout friction happens.", image:"https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80"},
-          {name:"Pork Cheeks", brand:"COMPART", item:"1816700", price:47.30, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Cleaner product discovery for specialty meat products.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80"},
-          {name:"Duck Breast", brand:"ROULAND", item:"1740991", price:112.60, pack:"1 x 12ct", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium protein with clearer buyer guidance.", image:"https://images.unsplash.com/photo-1600891963935-c1f95af6b1c8?auto=format&fit=crop&w=900&q=80"}
+          {name:"Chef Ready Tenderloin", brand:"COMPART", item:"1816666", price:189.75, pack:"2 x 5lb", status:"Restocking Soon", cls:"restock", desc:"High-value protein with clear status indicators and simplified item actions.", image:"https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=80", tags:["meat","beef","tenderloin"]},
+          {name:"Ground Lamb", brand:"PACKER", item:"1740201", price:95.20, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Protein item displayed in a cleaner, more professional B2B card layout.", image:"https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=80", tags:["meat","lamb","ground"]},
+          {name:"Bone-In Short Rib", brand:"PACKER", item:"1740321", price:144.00, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Bulk protein with clear pack-size and direct quantity adjustment.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", tags:["meat","beef","short rib"]},
+          {name:"Air-Chilled Chicken Supreme", brand:"FARMHOUSE", item:"1740880", price:72.10, pack:"4 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Low stock state helps buyers act faster before checkout friction happens.", image:"https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80", tags:["poultry","chicken","protein"]},
+          {name:"Pork Cheeks", brand:"COMPART", item:"1816700", price:47.30, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Cleaner product discovery for specialty meat products.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80", tags:["meat","pork","specialty"]},
+          {name:"Duck Breast", brand:"ROULAND", item:"1740991", price:112.60, pack:"1 x 12ct", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium protein with clearer buyer guidance.", image:"https://images.unsplash.com/photo-1600891963935-c1f95af6b1c8?auto=format&fit=crop&w=900&q=80", tags:["poultry","duck","premium"]}
         ]
       },
       pantry: {
@@ -757,26 +812,40 @@
         subtitle: "Back-of-house essentials and imported staples",
         description: "Oils, vinegars, canned goods, dry goods, grains, and specialty pantry products.",
         products: [
-          {name:"Extra Virgin Olive Oil", brand:"MEDITERRA", item:"3300400", price:84.50, pack:"4 x 3L", status:"In Stock", cls:"in-stock", desc:"Pantry staple displayed with cleaner pricing and pack-size structure.", image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80"},
-          {name:"Aged Balsamic Vinegar", brand:"MODENA", item:"3300501", price:63.20, pack:"6 x 500ml", status:"In Stock", cls:"in-stock", desc:"Imported pantry item designed to feel more premium and professional.", image:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&w=900&q=80"},
-          {name:"Ruby Tuna in Water", brand:"RUBY TUNA", item:"5539000", price:118.61, pack:"6 x 66oz", status:"Low Stock", cls:"low-stock", desc:"Pantry protein with clear status chips and faster ordering interactions.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"},
-          {name:"San Marzano Tomatoes", brand:"ITALIA", item:"3302010", price:42.00, pack:"6 x 102oz", status:"In Stock", cls:"in-stock", desc:"High-use kitchen staple in a cleaner card layout.", image:"https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?auto=format&fit=crop&w=900&q=80"},
-          {name:"Arborio Rice", brand:"RISERIA", item:"3303112", price:37.60, pack:"4 x 5lb", status:"Restocking Soon", cls:"restock", desc:"Restocking pantry staple with improved visibility earlier in the ordering flow.", image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80"},
-          {name:"Imported Capers", brand:"SICILIA", item:"3304500", price:28.90, pack:"12 x 32oz", status:"In Stock", cls:"in-stock", desc:"Imported pantry item with easier add and save flows.", image:"https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=900&q=80"}
+          {name:"Extra Virgin Olive Oil", brand:"MEDITERRA", item:"3300400", price:84.50, pack:"4 x 3L", status:"In Stock", cls:"in-stock", desc:"Pantry staple displayed with cleaner pricing and pack-size structure.", image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80", tags:["pantry","oil","imported"]},
+          {name:"Aged Balsamic Vinegar", brand:"MODENA", item:"3300501", price:63.20, pack:"6 x 500ml", status:"In Stock", cls:"in-stock", desc:"Imported pantry item designed to feel more premium and professional.", image:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&w=900&q=80", tags:["pantry","vinegar","imported"]},
+          {name:"Ruby Tuna in Water", brand:"RUBY TUNA", item:"5539000", price:118.61, pack:"6 x 66oz", status:"Low Stock", cls:"low-stock", desc:"Pantry protein with clear status chips and faster ordering interactions.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80", tags:["pantry","tuna","protein"]},
+          {name:"San Marzano Tomatoes", brand:"ITALIA", item:"3302010", price:42.00, pack:"6 x 102oz", status:"In Stock", cls:"in-stock", desc:"High-use kitchen staple in a cleaner card layout.", image:"https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?auto=format&fit=crop&w=900&q=80", tags:["pantry","tomatoes","imported"]},
+          {name:"Arborio Rice", brand:"RISERIA", item:"3303112", price:37.60, pack:"4 x 5lb", status:"Restocking Soon", cls:"restock", desc:"Restocking pantry staple with improved visibility earlier in the ordering flow.", image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80", tags:["pantry","rice","grains"]},
+          {name:"Imported Capers", brand:"SICILIA", item:"3304500", price:28.90, pack:"12 x 32oz", status:"In Stock", cls:"in-stock", desc:"Imported pantry item with easier add and save flows.", image:"https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=900&q=80", tags:["pantry","capers","imported"]}
         ]
       }
     };
 
+    const allProducts = Object.values(catalog).flatMap(category => category.products.map(p => ({...p, categoryTitle: category.title})));
+
     let currentCategory = "seafood";
     let statusFilter = 'all';
     let currentDetailProduct = null;
+    let activeDrawerTab = 'cart';
+    let lastSearchQuery = '';
 
     const cart = JSON.parse(localStorage.getItem('js_cart') || '[]');
     const saved = JSON.parse(localStorage.getItem('js_saved') || '[]');
+    const requisitions = JSON.parse(localStorage.getItem('js_requisitions') || '{}');
 
     function persist() {
       localStorage.setItem('js_cart', JSON.stringify(cart));
       localStorage.setItem('js_saved', JSON.stringify(saved));
+      localStorage.setItem('js_requisitions', JSON.stringify(requisitions));
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
     }
 
     function scrollToCatalog() {
@@ -790,7 +859,7 @@
     function getFilteredProducts(categoryKey, query = '') {
       const data = catalog[categoryKey];
       return data.products.filter(p => {
-        const matchesQuery = [p.name, p.brand, p.item].join(' ').toLowerCase().includes(query.toLowerCase());
+        const matchesQuery = [p.name, p.brand, p.item, ...(p.tags || [])].join(' ').toLowerCase().includes(query.toLowerCase());
         const matchesStatus = statusFilter === 'all' ? true : p.status === statusFilter;
         return matchesQuery && matchesStatus;
       });
@@ -818,7 +887,11 @@
         return;
       }
 
-      grid.innerHTML = filtered.map((p) => `
+      grid.innerHTML = filtered.map((p) => renderProductCard(p)).join("");
+    }
+
+    function renderProductCard(p) {
+      return `
         <article class="product">
           <div class="product-image" style="background-image:url('${p.image}')" onclick="openProduct('${escapeHtml(p.item)}')"></div>
           <div class="product-body">
@@ -840,10 +913,11 @@
               </div>
               <button class="add" onclick="addToCartFromCard('${escapeJs(p.item)}', this)">Add</button>
               <button class="save" onclick="saveFromCard('${escapeJs(p.item)}')">♡</button>
+              <button class="req" onclick="addToRequisitionFromCard('${escapeJs(p.item)}')">Req</button>
             </div>
           </div>
         </article>
-      `).join("");
+      `;
     }
 
     function showCategory(categoryKey, btn) {
@@ -851,6 +925,7 @@
       statusFilter = 'all';
       document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
       if (btn) btn.classList.add("active");
+      document.getElementById('productDetailSection').style.display = 'none';
       renderProducts(currentCategory, document.getElementById("searchInput").value);
       scrollToCatalog();
     }
@@ -877,11 +952,7 @@
     }
 
     function findProductByItem(item) {
-      for (const category of Object.values(catalog)) {
-        const found = category.products.find(p => p.item === item);
-        if (found) return found;
-      }
-      return null;
+      return allProducts.find(p => p.item === item) || null;
     }
 
     function addItem(targetArray, product, qty) {
@@ -889,7 +960,7 @@
       if (existing) {
         existing.qty += qty;
       } else {
-        targetArray.push({ item: product.item, name: product.name, price: product.price, qty, pack: product.pack, image: product.image });
+        targetArray.push({ item: product.item, name: product.name, price: product.price, qty, pack: product.pack, image: product.image, categoryTitle: product.categoryTitle });
       }
     }
 
@@ -903,7 +974,9 @@
       if (savedIndex > -1) saved.splice(savedIndex, 1);
       persist();
       updateDrawerUI();
-      openCart();
+      updateRelatedByCart();
+      openDrawer('cart');
+      showToast(`${product.name} added to cart`);
     }
 
     function saveFromCard(item) {
@@ -912,7 +985,27 @@
       addItem(saved, product, 1);
       persist();
       updateDrawerUI();
-      openSaved();
+      openDrawer('saved');
+      showToast(`${product.name} saved for later`);
+    }
+
+    function addToRequisition(product, listName, qty = 1) {
+      if (!requisitions[listName]) requisitions[listName] = [];
+      const existing = requisitions[listName].find(item => item.item === product.item);
+      if (existing) existing.qty += qty;
+      else requisitions[listName].push({ item: product.item, name: product.name, price: product.price, qty, pack: product.pack, image: product.image, categoryTitle: product.categoryTitle });
+      persist();
+      updateDrawerUI();
+    }
+
+    function addToRequisitionFromCard(item) {
+      const product = findProductByItem(item);
+      if (!product) return;
+      const listName = prompt('Enter requisition list name:', 'Kitchen Prep List');
+      if (!listName) return;
+      addToRequisition(product, listName.trim(), 1);
+      openDrawer('requisition');
+      showToast(`${product.name} added to requisition`);
     }
 
     function openProduct(item) {
@@ -927,12 +1020,13 @@
       document.getElementById('detailPack').textContent = product.pack;
       document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
       document.getElementById('detailQty').textContent = '1';
-      document.getElementById('detailBreadcrumb').textContent = `${catalog[currentCategory].title} / ${product.name}`;
+      document.getElementById('detailBreadcrumb').textContent = `${product.categoryTitle} / ${product.name}`;
       const status = document.getElementById('detailStatus');
       status.textContent = product.status;
       status.className = `status ${product.cls}`;
       document.getElementById('productDetailSection').style.display = 'block';
       document.getElementById('productDetailSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      renderRelatedProducts(product, 'Based on this product');
       history.replaceState(null, '', `#product-${product.item}`);
     }
 
@@ -958,7 +1052,9 @@
       if (savedIndex > -1) saved.splice(savedIndex, 1);
       persist();
       updateDrawerUI();
-      openCart();
+      updateRelatedByCart();
+      openDrawer('cart');
+      showToast(`${currentDetailProduct.name} added to cart`);
     }
 
     function saveCurrentDetailItem() {
@@ -966,24 +1062,94 @@
       addItem(saved, currentDetailProduct, 1);
       persist();
       updateDrawerUI();
-      openSaved();
+      openDrawer('saved');
+      showToast(`${currentDetailProduct.name} saved for later`);
     }
 
-    function changeModalQty(delta) {
-      const qty = document.getElementById('modalQty');
-      let value = parseInt(qty.textContent, 10) + delta;
-      if (value < 1) value = 1;
-      qty.textContent = value;
+    function addCurrentDetailToRequisition() {
+      if (!currentDetailProduct) return;
+      const listName = prompt('Enter requisition list name:', 'Weekly Order');
+      if (!listName) return;
+      const qty = parseInt(document.getElementById('detailQty').textContent, 10);
+      addToRequisition(currentDetailProduct, listName.trim(), qty);
+      openDrawer('requisition');
+      showToast(`${currentDetailProduct.name} added to requisition`);
     }
 
-    
+    function scoreRelated(base, candidate) {
+      let score = 0;
+      if (base.item === candidate.item) return -1;
+      if (base.categoryTitle === candidate.categoryTitle) score += 4;
+      if (base.brand === candidate.brand) score += 2;
+      const baseTags = base.tags || [];
+      const candTags = candidate.tags || [];
+      baseTags.forEach(tag => { if (candTags.includes(tag)) score += 3; });
+      if (Math.abs(base.price - candidate.price) < 30) score += 1;
+      return score;
+    }
 
-    let activeDrawerTab = 'cart';
+    function getRelatedProducts(product) {
+      return [...allProducts]
+        .map(candidate => ({ candidate, score: scoreRelated(product, candidate) }))
+        .filter(x => x.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3)
+        .map(x => x.candidate);
+    }
 
-    function switchDrawerTab(tab) {
+    function renderRelatedProducts(product, reasonText) {
+      const relatedGrid = document.getElementById('relatedGrid');
+      const relatedReason = document.getElementById('relatedReason');
+      relatedReason.textContent = reasonText;
+      const related = getRelatedProducts(product);
+      if (!related.length) {
+        relatedGrid.innerHTML = `<div class="empty-state">No related products available.</div>`;
+        return;
+      }
+      relatedGrid.innerHTML = related.map(p => renderProductCard(p)).join('');
+    }
+
+    function updateRelatedBySearch(query) {
+      if (!query.trim()) return;
+      const matches = allProducts.filter(p => [p.name, p.brand, p.item, ...(p.tags || [])].join(' ').toLowerCase().includes(query.toLowerCase()));
+      if (!matches.length) return;
+      const base = matches[0];
+      document.getElementById('productDetailSection').style.display = 'block';
+      renderRelatedProducts(base, `Related to search: "${query}"`);
+      document.getElementById('detailBreadcrumb').textContent = `Search / ${base.name}`;
+      document.getElementById('detailImage').style.backgroundImage = `url('${base.image}')`;
+      document.getElementById('detailName').textContent = base.name;
+      document.getElementById('detailDescription').textContent = base.desc;
+      document.getElementById('detailBrand').textContent = base.brand;
+      document.getElementById('detailItem').textContent = base.item;
+      document.getElementById('detailPack').textContent = base.pack;
+      document.getElementById('detailPrice').textContent = `$${base.price.toFixed(2)}`;
+      const status = document.getElementById('detailStatus');
+      status.textContent = base.status;
+      status.className = `status ${base.cls}`;
+      currentDetailProduct = base;
+    }
+
+    function updateRelatedByCart() {
+      if (!cart.length) return;
+      const last = cart[cart.length - 1];
+      const base = findProductByItem(last.item);
+      if (!base) return;
+      document.getElementById('productDetailSection').style.display = 'block';
+      renderRelatedProducts(base, 'Because you added this item to cart');
+    }
+
+    function getRequisitionCount() {
+      return Object.values(requisitions).reduce((sum, list) => sum + list.reduce((s, item) => s + item.qty, 0), 0);
+    }
+
+    function openDrawer(tab) {
       activeDrawerTab = tab;
       document.getElementById('cartTabBtn').classList.toggle('active', tab === 'cart');
       document.getElementById('savedTabBtn').classList.toggle('active', tab === 'saved');
+      document.getElementById('reqTabBtn').classList.toggle('active', tab === 'requisition');
+      document.getElementById('drawerPanel').classList.add('open');
+      document.getElementById('overlay').classList.add('show');
       updateDrawerUI();
     }
 
@@ -992,6 +1158,7 @@
       const cartTotal = document.getElementById('cartTotal');
       const cartCount = document.getElementById('cartCount');
       const savedCount = document.getElementById('savedCount');
+      const reqCount = document.getElementById('reqCount');
 
       let total = 0;
       let count = 0;
@@ -1002,9 +1169,34 @@
       cartTotal.textContent = "$" + total.toFixed(2);
       cartCount.textContent = count;
       savedCount.textContent = saved.reduce((sum, item) => sum + item.qty, 0);
+      reqCount.textContent = getRequisitionCount();
+
+      if (activeDrawerTab === 'requisition') {
+        const reqNames = Object.keys(requisitions);
+        if (!reqNames.length) {
+          drawerItems.innerHTML = `<div class="empty-state">No requisition lists yet.</div>`;
+          return;
+        }
+        drawerItems.innerHTML = reqNames.map(name => `
+          <div class="item-card">
+            <h4>${name}</h4>
+            <p>${requisitions[name].length} item(s)</p>
+            ${requisitions[name].map((item, index) => `
+              <div class="item-card" style="margin-top:12px; padding-bottom:10px; border-bottom:1px dashed #dfe6ef;">
+                <h4 style="font-size:16px;">${item.name}</h4>
+                <p>$${item.price.toFixed(2)} • ${item.pack} • Qty: ${item.qty}</p>
+                <div class="item-row">
+                  <button class="move-btn" onclick="moveRequisitionItemToCart('${escapeJs(name)}', ${index})">Move to cart</button>
+                  <button class="remove-btn" onclick="removeRequisitionItem('${escapeJs(name)}', ${index})">Remove</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `).join('');
+        return;
+      }
 
       const source = activeDrawerTab === 'cart' ? cart : saved;
-
       if (!source.length) {
         drawerItems.innerHTML = `<div class="empty-state">${activeDrawerTab === 'cart' ? 'Your cart is empty.' : 'No saved items yet.'}</div>`;
         return;
@@ -1024,6 +1216,7 @@
               ${activeDrawerTab === 'cart'
                 ? `<button class="move-btn" onclick="moveToSaved(${index})">Save for later</button>`
                 : `<button class="move-btn" onclick="moveToCart(${index})">Move to cart</button>`}
+              <button class="move-btn" onclick="quickAddToRequisition('${escapeJs(item.item)}')">Requisition</button>
               <button class="remove-btn" onclick="removeItem('${activeDrawerTab}', ${index})">Remove</button>
             </div>
           </div>
@@ -1051,7 +1244,8 @@
       addItem(saved, item, item.qty);
       cart.splice(index, 1);
       persist();
-      switchDrawerTab('saved');
+      openDrawer('saved');
+      showToast('Item moved to saved');
     }
 
     function moveToCart(index) {
@@ -1059,30 +1253,48 @@
       addItem(cart, item, item.qty);
       saved.splice(index, 1);
       persist();
-      switchDrawerTab('cart');
+      openDrawer('cart');
+      showToast('Item moved to cart');
     }
 
-    function openCart() {
-      switchDrawerTab('cart');
-      document.getElementById("cartDrawer").classList.add("open");
-      document.getElementById("overlay").classList.add("show");
+    function quickAddToRequisition(itemId) {
+      const product = findProductByItem(itemId);
+      if (!product) return;
+      const listName = prompt('Enter requisition list name:', 'Chef Order List');
+      if (!listName) return;
+      addToRequisition(product, listName.trim(), 1);
+      openDrawer('requisition');
+      showToast('Item added to requisition');
     }
 
-    function openSaved() {
-      switchDrawerTab('saved');
-      document.getElementById("cartDrawer").classList.add("open");
-      document.getElementById("overlay").classList.add("show");
+    function moveRequisitionItemToCart(listName, index) {
+      const item = requisitions[listName][index];
+      addItem(cart, item, item.qty);
+      requisitions[listName].splice(index, 1);
+      if (!requisitions[listName].length) delete requisitions[listName];
+      persist();
+      openDrawer('cart');
+      updateRelatedByCart();
+      showToast('Requisition item moved to cart');
+    }
+
+    function removeRequisitionItem(listName, index) {
+      requisitions[listName].splice(index, 1);
+      if (!requisitions[listName].length) delete requisitions[listName];
+      persist();
+      updateDrawerUI();
     }
 
     function closeAllPanels() {
-      document.getElementById("cartDrawer").classList.remove("open");
+      document.getElementById("drawerPanel").classList.remove("open");
       document.getElementById("overlay").classList.remove("show");
     }
 
-    document.getElementById("openCartBtn").addEventListener("click", openCart);
-
     document.getElementById("searchInput").addEventListener("input", function() {
-      renderProducts(currentCategory, this.value);
+      const query = this.value;
+      lastSearchQuery = query;
+      renderProducts(currentCategory, query);
+      if (query.trim().length >= 2) updateRelatedBySearch(query);
     });
 
     const rotatingAlerts = [
@@ -1101,11 +1313,48 @@
       first.className = rotatingAlerts[alertIndex][1];
     }, 2400);
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.getElementById("cartDrawer").classList.remove("open");
-        document.getElementById("overlay").classList.remove("show");
+    function toggleChatbot() {
+      document.getElementById('chatbot').classList.toggle('open');
+    }
+
+    function addChatMessage(text, type) {
+      const messages = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = `chat-msg ${type}`;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      addChatMessage(text, 'user');
+      const lower = text.toLowerCase();
+      let reply = 'Try searching for a product, opening a category, or asking about cart, saved items, or requisitions.';
+
+      if (lower.includes('cart')) reply = 'You can add items directly from the catalog or product detail page. The cart drawer also shows quantity updates and related next steps.';
+      else if (lower.includes('save')) reply = 'Use the heart button to save items for later. Saved items can be moved back to cart any time.';
+      else if (lower.includes('requisition')) reply = 'Use the Req button to create or add to a requisition list. Requisition items can later be moved into cart for checkout.';
+      else if (lower.includes('related')) reply = 'Related products appear when you search, open a product, or add an item to cart. They are based on category, tags, brand, and product similarity.';
+      else {
+        const found = allProducts.find(p => [p.name, p.brand, ...(p.tags || [])].join(' ').toLowerCase().includes(lower));
+        if (found) {
+          reply = `I found ${found.name}. I opened the product detail so you can add it to cart or view related items.`;
+          openProduct(found.item);
+        }
       }
+      addChatMessage(reply, 'bot');
+      input.value = '';
+    }
+
+    document.getElementById('chatInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendChat();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllPanels();
     });
 
     renderProducts(currentCategory);
