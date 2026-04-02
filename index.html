@@ -10,11 +10,11 @@
   <style>
     * { box-sizing: border-box; }
     :root{
-      --navy:#111827;
-      --navy2:#1f2937;
-      --gold:#d4a24c;
-      --gold2:#f1d39a;
-      --bg:#f7f3eb;
+      --navy:#0d1737;
+      --navy2:#152454;
+      --gold:#cda45b;
+      --gold2:#e8cb93;
+      --bg:#f4f7fb;
       --white:#fff;
       --text:#14213d;
       --muted:#66748f;
@@ -39,9 +39,8 @@
       font-family:'Inter', Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(212,162,76,.14), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(17,24,39,.06), transparent 18%),
-        linear-gradient(180deg, #f8f5ef 0%, #fcfbf8 100%);
+        radial-gradient(circle at top left, rgba(205,164,91,.12), transparent 20%),
+        linear-gradient(180deg, #eef3f9 0%, #f8fafc 100%);
     }
     a{ text-decoration:none; color:inherit; }
     button, input { font-family: inherit; }
@@ -127,10 +126,10 @@
 
     .hero{
       background:
-        linear-gradient(115deg, rgba(17,24,39,.90), rgba(31,41,55,.76)),
-        url("https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+        linear-gradient(115deg, rgba(13,23,55,.96), rgba(20,33,80,.90)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
       color:#fff;
-      padding:72px 0 54px;
+      padding:54px 0 40px;
     }
     .hero-grid{
       display:grid;
@@ -167,23 +166,21 @@
     }
     .btn:hover { transform:translateY(-1px); }
     .btn-primary{
-      background:linear-gradient(135deg, var(--gold), #f0cf8a);
-      color:#241a08;
-      box-shadow:0 10px 24px rgba(212,162,76,.28);
+      background:linear-gradient(135deg, var(--gold), #f2d396);
+      color:#1b2235;
     }
     .btn-secondary{
-      background:rgba(255,255,255,.08);
-      color:#fff; border:1px solid rgba(255,255,255,.24);
-      backdrop-filter:blur(10px);
+      background:rgba(255,255,255,.06);
+      color:#fff; border:1px solid rgba(255,255,255,.18);
     }
 
     .dashboard{
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
       border-radius:28px;
       padding:24px;
-      box-shadow:0 20px 60px rgba(0,0,0,.18);
-      backdrop-filter:blur(20px);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
     }
     .dash-head{
       display:flex; justify-content:space-between; align-items:center; color:#fff;
@@ -243,13 +240,12 @@
       align-items:start;
     }
     .sidebar{
-      background:linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
+      background:#fff;
       border-radius:22px;
-      box-shadow:0 16px 34px rgba(17,24,39,.08);
+      box-shadow:var(--shadow);
       padding:22px;
       position:sticky;
       top:132px;
-      border:1px solid #f0e7d8;
     }
     .sidebar h3{ margin:0 0 18px; font-size:20px; }
     .filter{
@@ -264,12 +260,11 @@
     }
     .filter.active { border-color:#b9caea; background:#eef4ff; }
     .category-header{
-      background:linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
+      background:#fff;
       border-radius:22px;
-      box-shadow:0 16px 34px rgba(17,24,39,.08);
+      box-shadow:var(--shadow);
       padding:22px;
       margin-bottom:20px;
-      border:1px solid #f0e7d8;
     }
     .category-header p{
       margin:8px 0 0;
@@ -283,16 +278,16 @@
       gap:20px;
     }
     .product{
-      background:linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
+      background:#fff;
       border-radius:24px;
       overflow:hidden;
-      box-shadow:0 16px 34px rgba(17,24,39,.08);
-      border:1px solid #f0e7d8;
+      box-shadow:var(--shadow);
+      border:1px solid #eef2f7;
       display:flex;
       flex-direction:column;
       transition:transform .18s ease, box-shadow .18s ease;
     }
-    .product:hover { transform:translateY(-6px); box-shadow:0 26px 56px rgba(17,24,39,.14); }
+    .product:hover { transform:translateY(-4px); box-shadow:0 24px 52px rgba(11,19,44,.15); }
     .product-image{
       aspect-ratio:1.15/1;
       background-size:cover;
@@ -369,9 +364,9 @@
 
     .footer{
       margin-top:24px;
-      background:linear-gradient(180deg, #161d2b 0%, #0f1723 100%);
+      background:linear-gradient(180deg, #0b1432 0%, #111d43 100%);
       color:#fff;
-      padding:52px 0;
+      padding:42px 0;
     }
     .footer-grid{
       display:grid;
@@ -506,58 +501,6 @@
       .spec-list { grid-template-columns:1fr; }
       .chatbot { width: calc(100% - 24px); right:12px; left:12px; }
     }
-    <style>
-  /* your existing CSS */
-
-  /* ✅ ADD NEW HERO CSS HERE (PASTE BELOW) */
-  .hero-showcase {
-    margin-top:26px;
-    display:grid;
-    grid-template-columns:1.3fr .9fr;
-    gap:14px;
-  }
-
-  .hero-feature {
-    position:relative;
-    min-height:260px;
-    border-radius:26px;
-    overflow:hidden;
-    cursor:pointer;
-  }
-
-  .hero-feature-image {
-    position:absolute;
-    inset:0;
-    background-size:cover;
-    background-position:center;
-  }
-
-  .hero-feature-overlay {
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.7));
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    color:#fff;
-  }
-
-  .hero-thumbs {
-    display:grid;
-    gap:10px;
-  }
-
-  .hero-thumb {
-    display:flex;
-    gap:10px;
-    background:#fff;
-    padding:10px;
-    border-radius:12px;
-    cursor:pointer;
-  }
-
-</style>
   </style>
 </head>
 <body>
@@ -606,42 +549,14 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-  <span class="kicker">ARTISAN INGREDIENTS • MODERN ORDERING</span>
-  <h1>Curated sourcing for chefs who buy with precision.</h1>
-  <p>Discover premium ingredients, monitor availability instantly, and build orders through a refined platform.</p>
-
-  <div class="hero-actions">
-    <button class="btn btn-primary" onclick="scrollToCatalog()">Browse Catalog</button>
-    <button class="btn btn-secondary" onclick="openDrawer('cart')">Open Cart</button>
-  </div>
-
-  <!-- ✅ ADD THIS -->
-  <div class="hero-showcase">
-    <div class="hero-feature" onclick="openHeroProduct()">
-      <div class="hero-feature-image" id="heroImage"></div>
-      <div class="hero-feature-overlay">
-        <h3 id="heroTitle">Atlantic Salmon</h3>
-        <p id="heroText">Fresh premium seafood</p>
-      </div>
-    </div>
-
-    <div class="hero-thumbs" id="heroThumbs"></div>
-  </div>
-</div>
-          <h1>Curated sourcing for chefs who buy with precision.</h1>
-          <p>Discover premium ingredients, monitor availability instantly, and build orders through a refined platform designed for serious foodservice buyers.</p>
+          <span class="kicker">CHEF-CENTRIC B2B REDESIGN</span>
+          <h1>Built like a real ordering portal for busy kitchens.</h1>
+          <p>Premium sourcing platform for professional kitchens with faster ordering, cleaner product discovery, and practical buyer tools.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" onclick="scrollToCatalog()">Browse Catalog</button>
             <button class="btn btn-secondary" onclick="openDrawer('cart')">Open Cart</button>
           </div>
 
-          </div>
-
-        <div class="hero-images" style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px;">
-            <div style="height:120px; border-radius:16px; background:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-            <div style="height:120px; border-radius:16px; background:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-            <div style="height:120px; border-radius:16px; background:url('https://images.unsplash.com/photo-1604908176997-431b6e9d9c08?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
-            <div style="height:120px; border-radius:16px; background:url('https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=80') center/cover;"></div>
           </div>
 
         <div class="dashboard">
@@ -806,59 +721,6 @@
   </div>
 
   <div class="toast" id="toast"></div>
-  const heroItems = [
-  {
-    name: "Atlantic Salmon",
-    image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62",
-    text: "Premium seafood ready for kitchens",
-    item: "5400210"
-  },
-  {
-    name: "Fresh Burrata",
-    image: "https://images.unsplash.com/photo-1626201850125-a96f2600eeae",
-    text: "Creamy cheese for plating",
-    item: "2101098"
-  },
-  {
-    name: "Short Rib",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947",
-    text: "Rich protein cut",
-    item: "1740321"
-  }
-];
-
-let currentHero = 0;
-
-function loadHero() {
-  const item = heroItems[currentHero];
-  document.getElementById("heroImage").style.backgroundImage = `url(${item.image})`;
-  document.getElementById("heroTitle").innerText = item.name;
-  document.getElementById("heroText").innerText = item.text;
-
-  const thumbs = document.getElementById("heroThumbs");
-  thumbs.innerHTML = heroItems.map((p, i) => `
-    <div class="hero-thumb" onclick="setHero(${i})">
-      <img src="${p.image}" width="60"/>
-      <div>${p.name}</div>
-    </div>
-  `).join("");
-}
-
-function setHero(index) {
-  currentHero = index;
-  loadHero();
-}
-
-function openHeroProduct() {
-  openProduct(heroItems[currentHero].item);
-}
-
-setInterval(() => {
-  currentHero = (currentHero + 1) % heroItems.length;
-  loadHero();
-}, 4000);
-
-loadHero();
 
   <script>
     const catalog = {
@@ -932,4 +794,563 @@ loadHero();
         subtitle: "Back-of-house essentials and imported staples",
         description: "Oils, vinegars, canned goods, dry goods, grains, and specialty pantry products.",
         products: [
-          {name:"Extra Virgin Olive Oil", brand:"MEDITERRA", item:"3300400", price:84.50, pack:"4 x 3L", status:"In Stock", cls:"in-stock", desc:"Pantry staple displayed with cleaner pricing and pac
+          {name:"Extra Virgin Olive Oil", brand:"MEDITERRA", item:"3300400", price:84.50, pack:"4 x 3L", status:"In Stock", cls:"in-stock", desc:"Pantry staple displayed with cleaner pricing and pack-size structure.", image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80", tags:["pantry","oil","imported"]},
+          {name:"Aged Balsamic Vinegar", brand:"MODENA", item:"3300501", price:63.20, pack:"6 x 500ml", status:"In Stock", cls:"in-stock", desc:"Imported pantry item designed to feel more premium and professional.", image:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&w=900&q=80", tags:["pantry","vinegar","imported"]},
+          {name:"Ruby Tuna in Water", brand:"RUBY TUNA", item:"5539000", price:118.61, pack:"6 x 66oz", status:"Low Stock", cls:"low-stock", desc:"Pantry protein with clear status chips and faster ordering interactions.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80", tags:["pantry","tuna","protein"]},
+          {name:"San Marzano Tomatoes", brand:"ITALIA", item:"3302010", price:42.00, pack:"6 x 102oz", status:"In Stock", cls:"in-stock", desc:"High-use kitchen staple in a cleaner card layout.", image:"https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?auto=format&fit=crop&w=900&q=80", tags:["pantry","tomatoes","imported"]},
+          {name:"Arborio Rice", brand:"RISERIA", item:"3303112", price:37.60, pack:"4 x 5lb", status:"Restocking Soon", cls:"restock", desc:"Restocking pantry staple with improved visibility earlier in the ordering flow.", image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80", tags:["pantry","rice","grains"]},
+          {name:"Imported Capers", brand:"SICILIA", item:"3304500", price:28.90, pack:"12 x 32oz", status:"In Stock", cls:"in-stock", desc:"Imported pantry item with easier add and save flows.", image:"https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=900&q=80", tags:["pantry","capers","imported"]}
+        ]
+      }
+    };
+
+    const allProducts = Object.values(catalog).flatMap(category => category.products.map(p => ({...p, categoryTitle: category.title})));
+
+    let currentCategory = "seafood";
+    let statusFilter = 'all';
+    let currentDetailProduct = null;
+    let activeDrawerTab = 'cart';
+    let lastSearchQuery = '';
+
+    const cart = JSON.parse(localStorage.getItem('js_cart') || '[]');
+    const saved = JSON.parse(localStorage.getItem('js_saved') || '[]');
+    const requisitions = JSON.parse(localStorage.getItem('js_requisitions') || '{}');
+
+    function persist() {
+      localStorage.setItem('js_cart', JSON.stringify(cart));
+      localStorage.setItem('js_saved', JSON.stringify(saved));
+      localStorage.setItem('js_requisitions', JSON.stringify(requisitions));
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function scrollToCatalog() {
+      document.getElementById("catalog").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function scrollToHome() {
+      document.getElementById("home").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function getFilteredProducts(categoryKey, query = '') {
+      const data = catalog[categoryKey];
+      return data.products.filter(p => {
+        const matchesQuery = [p.name, p.brand, p.item, ...(p.tags || [])].join(' ').toLowerCase().includes(query.toLowerCase());
+        const matchesStatus = statusFilter === 'all' ? true : p.status === statusFilter;
+        return matchesQuery && matchesStatus;
+      });
+    }
+
+    function renderProducts(categoryKey, query = "") {
+      const data = catalog[categoryKey];
+      const grid = document.getElementById("productGrid");
+      const title = document.getElementById("categoryTitle");
+      const subtitle = document.getElementById("categorySubtitle");
+      const desc = document.getElementById("categoryDescription");
+      const count = document.getElementById("categoryCount");
+      const sidebar = document.getElementById("sidebarCategory");
+
+      title.textContent = data.title;
+      subtitle.textContent = data.subtitle;
+      desc.textContent = data.description;
+      sidebar.innerHTML = `<span>Category: ${data.title}</span><span>✓</span>`;
+
+      const filtered = getFilteredProducts(categoryKey, query);
+      count.textContent = filtered.length + " products";
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="empty-state">No products found in this category for your current search or availability filter.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((p) => renderProductCard(p)).join("");
+    }
+
+    function renderProductCard(p) {
+      return `
+        <article class="product">
+          <div class="product-image" style="background-image:url('${p.image}')" onclick="openProduct('${escapeHtml(p.item)}')"></div>
+          <div class="product-body">
+            <h3 onclick="openProduct('${escapeHtml(p.item)}')">${p.name}</h3>
+            <small>${p.brand}<br>Item#: ${p.item}</small>
+            <div class="case-pill">CASE</div>
+            <div class="price-row">
+              <div class="price">$${p.price.toFixed(2)}</div>
+              <div class="subprice">${p.pack}</div>
+            </div>
+            <div class="status-row">
+              <span class="status ${p.cls}">${p.status}</span>
+            </div>
+            <div class="buy-row">
+              <div class="qty">
+                <button onclick="changeQty(this,-1)">−</button>
+                <span>1</span>
+                <button onclick="changeQty(this,1)">+</button>
+              </div>
+              <button class="add" onclick="addToCartFromCard('${escapeJs(p.item)}', this)">Add</button>
+              <button class="save" onclick="saveFromCard('${escapeJs(p.item)}')">♡</button>
+              <button class="req" onclick="addToRequisitionFromCard('${escapeJs(p.item)}')">Req</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function showCategory(categoryKey, btn) {
+      currentCategory = categoryKey;
+      statusFilter = 'all';
+      document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      document.getElementById('productDetailSection').style.display = 'none';
+      renderProducts(currentCategory, document.getElementById("searchInput").value);
+      scrollToCatalog();
+    }
+
+    function filterByStatus(status) {
+      statusFilter = status;
+      renderProducts(currentCategory, document.getElementById('searchInput').value);
+    }
+
+    function changeQty(button, delta) {
+      const qtyBox = button.parentElement.querySelector("span");
+      let value = parseInt(qtyBox.textContent, 10);
+      value += delta;
+      if (value < 1) value = 1;
+      qtyBox.textContent = value;
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function escapeJs(str) {
+      return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+
+    function findProductByItem(item) {
+      return allProducts.find(p => p.item === item) || null;
+    }
+
+    function addItem(targetArray, product, qty) {
+      const existing = targetArray.find(item => item.item === product.item);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        targetArray.push({ item: product.item, name: product.name, price: product.price, qty, pack: product.pack, image: product.image, categoryTitle: product.categoryTitle });
+      }
+    }
+
+    function addToCartFromCard(item, btn) {
+      const product = findProductByItem(item);
+      if (!product) return;
+      const card = btn.closest('.product');
+      const qty = parseInt(card.querySelector('.qty span').textContent, 10);
+      addItem(cart, product, qty);
+      const savedIndex = saved.findIndex(s => s.item === product.item);
+      if (savedIndex > -1) saved.splice(savedIndex, 1);
+      persist();
+      updateDrawerUI();
+      updateRelatedByCart();
+      openDrawer('cart');
+      showToast(`${product.name} added to cart`);
+    }
+
+    function saveFromCard(item) {
+      const product = findProductByItem(item);
+      if (!product) return;
+      addItem(saved, product, 1);
+      persist();
+      updateDrawerUI();
+      openDrawer('saved');
+      showToast(`${product.name} saved for later`);
+    }
+
+    function addToRequisition(product, listName, qty = 1) {
+      if (!requisitions[listName]) requisitions[listName] = [];
+      const existing = requisitions[listName].find(item => item.item === product.item);
+      if (existing) existing.qty += qty;
+      else requisitions[listName].push({ item: product.item, name: product.name, price: product.price, qty, pack: product.pack, image: product.image, categoryTitle: product.categoryTitle });
+      persist();
+      updateDrawerUI();
+    }
+
+    function addToRequisitionFromCard(item) {
+      const product = findProductByItem(item);
+      if (!product) return;
+      const listName = prompt('Enter requisition list name:', 'Kitchen Prep List');
+      if (!listName) return;
+      addToRequisition(product, listName.trim(), 1);
+      openDrawer('requisition');
+      showToast(`${product.name} added to requisition`);
+    }
+
+    function openProduct(item) {
+      const product = findProductByItem(item);
+      if (!product) return;
+      currentDetailProduct = product;
+      document.getElementById('detailImage').style.backgroundImage = `url('${product.image}')`;
+      document.getElementById('detailName').textContent = product.name;
+      document.getElementById('detailDescription').textContent = product.desc;
+      document.getElementById('detailBrand').textContent = product.brand;
+      document.getElementById('detailItem').textContent = product.item;
+      document.getElementById('detailPack').textContent = product.pack;
+      document.getElementById('detailPrice').textContent = `$${product.price.toFixed(2)}`;
+      document.getElementById('detailQty').textContent = '1';
+      document.getElementById('detailBreadcrumb').textContent = `${product.categoryTitle} / ${product.name}`;
+      const status = document.getElementById('detailStatus');
+      status.textContent = product.status;
+      status.className = `status ${product.cls}`;
+      document.getElementById('productDetailSection').style.display = 'block';
+      document.getElementById('productDetailSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      renderRelatedProducts(product, 'Based on this product');
+      history.replaceState(null, '', `#product-${product.item}`);
+    }
+
+    function backToCatalog() {
+      document.getElementById('productDetailSection').style.display = 'none';
+      currentDetailProduct = null;
+      history.replaceState(null, '', '#catalog');
+      document.getElementById('catalog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function changeDetailQty(delta) {
+      const qty = document.getElementById('detailQty');
+      let value = parseInt(qty.textContent, 10) + delta;
+      if (value < 1) value = 1;
+      qty.textContent = value;
+    }
+
+    function addCurrentDetailToCart() {
+      if (!currentDetailProduct) return;
+      const qty = parseInt(document.getElementById('detailQty').textContent, 10);
+      addItem(cart, currentDetailProduct, qty);
+      const savedIndex = saved.findIndex(s => s.item === currentDetailProduct.item);
+      if (savedIndex > -1) saved.splice(savedIndex, 1);
+      persist();
+      updateDrawerUI();
+      updateRelatedByCart();
+      openDrawer('cart');
+      showToast(`${currentDetailProduct.name} added to cart`);
+    }
+
+    function saveCurrentDetailItem() {
+      if (!currentDetailProduct) return;
+      addItem(saved, currentDetailProduct, 1);
+      persist();
+      updateDrawerUI();
+      openDrawer('saved');
+      showToast(`${currentDetailProduct.name} saved for later`);
+    }
+
+    function addCurrentDetailToRequisition() {
+      if (!currentDetailProduct) return;
+      const listName = prompt('Enter requisition list name:', 'Weekly Order');
+      if (!listName) return;
+      const qty = parseInt(document.getElementById('detailQty').textContent, 10);
+      addToRequisition(currentDetailProduct, listName.trim(), qty);
+      openDrawer('requisition');
+      showToast(`${currentDetailProduct.name} added to requisition`);
+    }
+
+    function scoreRelated(base, candidate) {
+      let score = 0;
+      if (base.item === candidate.item) return -1;
+      if (base.categoryTitle === candidate.categoryTitle) score += 4;
+      if (base.brand === candidate.brand) score += 2;
+      const baseTags = base.tags || [];
+      const candTags = candidate.tags || [];
+      baseTags.forEach(tag => { if (candTags.includes(tag)) score += 3; });
+      if (Math.abs(base.price - candidate.price) < 30) score += 1;
+      return score;
+    }
+
+    function getRelatedProducts(product) {
+      return [...allProducts]
+        .map(candidate => ({ candidate, score: scoreRelated(product, candidate) }))
+        .filter(x => x.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 3)
+        .map(x => x.candidate);
+    }
+
+    function renderRelatedProducts(product, reasonText) {
+      const relatedGrid = document.getElementById('relatedGrid');
+      const relatedReason = document.getElementById('relatedReason');
+      relatedReason.textContent = reasonText;
+      const related = getRelatedProducts(product);
+      if (!related.length) {
+        relatedGrid.innerHTML = `<div class="empty-state">No related products available.</div>`;
+        return;
+      }
+      relatedGrid.innerHTML = related.map(p => renderProductCard(p)).join('');
+    }
+
+    function updateRelatedBySearch(query) {
+      if (!query.trim()) return;
+      const matches = allProducts.filter(p => [p.name, p.brand, p.item, ...(p.tags || [])].join(' ').toLowerCase().includes(query.toLowerCase()));
+      if (!matches.length) return;
+      const base = matches[0];
+      document.getElementById('productDetailSection').style.display = 'block';
+      renderRelatedProducts(base, `Related to search: "${query}"`);
+      document.getElementById('detailBreadcrumb').textContent = `Search / ${base.name}`;
+      document.getElementById('detailImage').style.backgroundImage = `url('${base.image}')`;
+      document.getElementById('detailName').textContent = base.name;
+      document.getElementById('detailDescription').textContent = base.desc;
+      document.getElementById('detailBrand').textContent = base.brand;
+      document.getElementById('detailItem').textContent = base.item;
+      document.getElementById('detailPack').textContent = base.pack;
+      document.getElementById('detailPrice').textContent = `$${base.price.toFixed(2)}`;
+      const status = document.getElementById('detailStatus');
+      status.textContent = base.status;
+      status.className = `status ${base.cls}`;
+      currentDetailProduct = base;
+    }
+
+    function updateRelatedByCart() {
+      if (!cart.length) return;
+      const last = cart[cart.length - 1];
+      const base = findProductByItem(last.item);
+      if (!base) return;
+      document.getElementById('productDetailSection').style.display = 'block';
+      renderRelatedProducts(base, 'Because you added this item to cart');
+    }
+
+    function getRequisitionCount() {
+      return Object.values(requisitions).reduce((sum, list) => sum + list.reduce((s, item) => s + item.qty, 0), 0);
+    }
+
+    function openDrawer(tab) {
+      activeDrawerTab = tab;
+      document.getElementById('cartTabBtn').classList.toggle('active', tab === 'cart');
+      document.getElementById('savedTabBtn').classList.toggle('active', tab === 'saved');
+      document.getElementById('reqTabBtn').classList.toggle('active', tab === 'requisition');
+      document.getElementById('drawerPanel').classList.add('open');
+      document.getElementById('overlay').classList.add('show');
+      updateDrawerUI();
+    }
+
+    function updateDrawerUI() {
+      const drawerItems = document.getElementById('drawerItems');
+      const cartTotal = document.getElementById('cartTotal');
+      const cartCount = document.getElementById('cartCount');
+      const savedCount = document.getElementById('savedCount');
+      const reqCount = document.getElementById('reqCount');
+
+      let total = 0;
+      let count = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+      });
+      cartTotal.textContent = "$" + total.toFixed(2);
+      cartCount.textContent = count;
+      savedCount.textContent = saved.reduce((sum, item) => sum + item.qty, 0);
+      reqCount.textContent = getRequisitionCount();
+
+      if (activeDrawerTab === 'requisition') {
+        const reqNames = Object.keys(requisitions);
+        if (!reqNames.length) {
+          drawerItems.innerHTML = `<div class="empty-state">No requisition lists yet.</div>`;
+          return;
+        }
+        drawerItems.innerHTML = reqNames.map(name => `
+          <div class="item-card">
+            <h4>${name}</h4>
+            <p>${requisitions[name].length} item(s)</p>
+            ${requisitions[name].map((item, index) => `
+              <div class="item-card" style="margin-top:12px; padding-bottom:10px; border-bottom:1px dashed #dfe6ef;">
+                <h4 style="font-size:16px;">${item.name}</h4>
+                <p>$${item.price.toFixed(2)} • ${item.pack} • Qty: ${item.qty}</p>
+                <div class="item-row">
+                  <button class="move-btn" onclick="moveRequisitionItemToCart('${escapeJs(name)}', ${index})">Move to cart</button>
+                  <button class="remove-btn" onclick="removeRequisitionItem('${escapeJs(name)}', ${index})">Remove</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `).join('');
+        return;
+      }
+
+      const source = activeDrawerTab === 'cart' ? cart : saved;
+      if (!source.length) {
+        drawerItems.innerHTML = `<div class="empty-state">${activeDrawerTab === 'cart' ? 'Your cart is empty.' : 'No saved items yet.'}</div>`;
+        return;
+      }
+
+      drawerItems.innerHTML = source.map((item, index) => `
+        <div class="item-card">
+          <h4>${item.name}</h4>
+          <p>$${item.price.toFixed(2)} • ${item.pack}</p>
+          <div class="item-row">
+            <div class="qty">
+              <button onclick="updateQty('${activeDrawerTab}', ${index}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="updateQty('${activeDrawerTab}', ${index}, 1)">+</button>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;">
+              ${activeDrawerTab === 'cart'
+                ? `<button class="move-btn" onclick="moveToSaved(${index})">Save for later</button>`
+                : `<button class="move-btn" onclick="moveToCart(${index})">Move to cart</button>`}
+              <button class="move-btn" onclick="quickAddToRequisition('${escapeJs(item.item)}')">Requisition</button>
+              <button class="remove-btn" onclick="removeItem('${activeDrawerTab}', ${index})">Remove</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateQty(sourceName, index, delta) {
+      const source = sourceName === 'cart' ? cart : saved;
+      source[index].qty += delta;
+      if (source[index].qty <= 0) source.splice(index, 1);
+      persist();
+      updateDrawerUI();
+    }
+
+    function removeItem(sourceName, index) {
+      const source = sourceName === 'cart' ? cart : saved;
+      source.splice(index, 1);
+      persist();
+      updateDrawerUI();
+    }
+
+    function moveToSaved(index) {
+      const item = cart[index];
+      addItem(saved, item, item.qty);
+      cart.splice(index, 1);
+      persist();
+      openDrawer('saved');
+      showToast('Item moved to saved');
+    }
+
+    function moveToCart(index) {
+      const item = saved[index];
+      addItem(cart, item, item.qty);
+      saved.splice(index, 1);
+      persist();
+      openDrawer('cart');
+      showToast('Item moved to cart');
+    }
+
+    function quickAddToRequisition(itemId) {
+      const product = findProductByItem(itemId);
+      if (!product) return;
+      const listName = prompt('Enter requisition list name:', 'Chef Order List');
+      if (!listName) return;
+      addToRequisition(product, listName.trim(), 1);
+      openDrawer('requisition');
+      showToast('Item added to requisition');
+    }
+
+    function moveRequisitionItemToCart(listName, index) {
+      const item = requisitions[listName][index];
+      addItem(cart, item, item.qty);
+      requisitions[listName].splice(index, 1);
+      if (!requisitions[listName].length) delete requisitions[listName];
+      persist();
+      openDrawer('cart');
+      updateRelatedByCart();
+      showToast('Requisition item moved to cart');
+    }
+
+    function removeRequisitionItem(listName, index) {
+      requisitions[listName].splice(index, 1);
+      if (!requisitions[listName].length) delete requisitions[listName];
+      persist();
+      updateDrawerUI();
+    }
+
+    function closeAllPanels() {
+      document.getElementById("drawerPanel").classList.remove("open");
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    document.getElementById("searchInput").addEventListener("input", function() {
+      const query = this.value;
+      lastSearchQuery = query;
+      renderProducts(currentCategory, query);
+      if (query.trim().length >= 2) updateRelatedBySearch(query);
+    });
+
+    const rotatingAlerts = [
+      ["Atlantic Salmon — In Stock", "alert-chip in-stock"],
+      ["Microgreens — Low Stock", "alert-chip low-stock"],
+      ["Black Winter Truffles — Quote Required", "alert-chip quote-only"],
+      ["Scallops — Restocking Tomorrow", "alert-chip restock"]
+    ];
+
+    let alertIndex = 0;
+    setInterval(() => {
+      const first = document.querySelector("#inventoryAlerts .alert-chip");
+      if (!first) return;
+      alertIndex = (alertIndex + 1) % rotatingAlerts.length;
+      first.textContent = rotatingAlerts[alertIndex][0];
+      first.className = rotatingAlerts[alertIndex][1];
+    }, 2400);
+
+    function toggleChatbot() {
+      document.getElementById('chatbot').classList.toggle('open');
+    }
+
+    function addChatMessage(text, type) {
+      const messages = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      div.className = `chat-msg ${type}`;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function sendChat() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      addChatMessage(text, 'user');
+      const lower = text.toLowerCase();
+      let reply = 'I could not find a direct answer for that. You can contact support at ramyagorantla2001@gmail.com or click the support link below.';
+
+      if (lower.includes('cart')) reply = 'You can add items directly from the catalog or product detail page. The cart drawer also supports quantity updates.';
+      else if (lower.includes('save')) reply = 'Use the heart button to save items for later. Saved items can be moved back to cart any time.';
+      else if (lower.includes('requisition')) reply = 'Use the Req button to create or add to a requisition list. Requisition items can later be moved into cart.';
+      else if (lower.includes('related')) reply = 'Related products appear when you search, open a product, or add an item to cart.';
+      else if (lower.includes('support') || lower.includes('contact') || lower.includes('help')) {
+        reply = 'Please contact support at ramyagorantla2001@gmail.com.';
+      } else {
+        const found = allProducts.find(p => [p.name, p.brand, ...(p.tags || [])].join(' ').toLowerCase().includes(lower));
+        if (found) {
+          reply = `I found ${found.name}. I opened the product detail so you can review it.`;
+          openProduct(found.item);
+        }
+      }
+      addChatMessage(reply, 'bot');
+      if (!allProducts.find(p => [p.name, p.brand, ...(p.tags || [])].join(' ').toLowerCase().includes(lower)) && !(lower.includes('cart') || lower.includes('save') || lower.includes('requisition') || lower.includes('related') || lower.includes('support') || lower.includes('contact') || lower.includes('help'))) {
+        const messages = document.getElementById('chatMessages');
+        const linkWrap = document.createElement('div');
+        linkWrap.className = 'chat-msg bot';
+        linkWrap.innerHTML = 'Need help? <a href="mailto:ramyagorantla2001@gmail.com" style="color:#274692; font-weight:700;">Chat with support</a>';
+        messages.appendChild(linkWrap);
+        messages.scrollTop = messages.scrollHeight;
+      }
+      input.value = '';
+    }
+
+    document.getElementById('chatInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendChat();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllPanels();
+    });
+
+    renderProducts(currentCategory);
+    updateDrawerUI();
+  </script>
+</body>
+</html>
