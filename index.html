@@ -506,6 +506,58 @@
       .spec-list { grid-template-columns:1fr; }
       .chatbot { width: calc(100% - 24px); right:12px; left:12px; }
     }
+    <style>
+  /* your existing CSS */
+
+  /* ✅ ADD NEW HERO CSS HERE (PASTE BELOW) */
+  .hero-showcase {
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:1.3fr .9fr;
+    gap:14px;
+  }
+
+  .hero-feature {
+    position:relative;
+    min-height:260px;
+    border-radius:26px;
+    overflow:hidden;
+    cursor:pointer;
+  }
+
+  .hero-feature-image {
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+  }
+
+  .hero-feature-overlay {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.7));
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    color:#fff;
+  }
+
+  .hero-thumbs {
+    display:grid;
+    gap:10px;
+  }
+
+  .hero-thumb {
+    display:flex;
+    gap:10px;
+    background:#fff;
+    padding:10px;
+    border-radius:12px;
+    cursor:pointer;
+  }
+
+</style>
   </style>
 </head>
 <body>
@@ -554,7 +606,28 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <span class="kicker">ARTISAN INGREDIENTS • MODERN ORDERING</span>
+  <span class="kicker">ARTISAN INGREDIENTS • MODERN ORDERING</span>
+  <h1>Curated sourcing for chefs who buy with precision.</h1>
+  <p>Discover premium ingredients, monitor availability instantly, and build orders through a refined platform.</p>
+
+  <div class="hero-actions">
+    <button class="btn btn-primary" onclick="scrollToCatalog()">Browse Catalog</button>
+    <button class="btn btn-secondary" onclick="openDrawer('cart')">Open Cart</button>
+  </div>
+
+  <!-- ✅ ADD THIS -->
+  <div class="hero-showcase">
+    <div class="hero-feature" onclick="openHeroProduct()">
+      <div class="hero-feature-image" id="heroImage"></div>
+      <div class="hero-feature-overlay">
+        <h3 id="heroTitle">Atlantic Salmon</h3>
+        <p id="heroText">Fresh premium seafood</p>
+      </div>
+    </div>
+
+    <div class="hero-thumbs" id="heroThumbs"></div>
+  </div>
+</div>
           <h1>Curated sourcing for chefs who buy with precision.</h1>
           <p>Discover premium ingredients, monitor availability instantly, and build orders through a refined platform designed for serious foodservice buyers.</p>
           <div class="hero-actions">
@@ -733,6 +806,59 @@
   </div>
 
   <div class="toast" id="toast"></div>
+  const heroItems = [
+  {
+    name: "Atlantic Salmon",
+    image: "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62",
+    text: "Premium seafood ready for kitchens",
+    item: "5400210"
+  },
+  {
+    name: "Fresh Burrata",
+    image: "https://images.unsplash.com/photo-1626201850125-a96f2600eeae",
+    text: "Creamy cheese for plating",
+    item: "2101098"
+  },
+  {
+    name: "Short Rib",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947",
+    text: "Rich protein cut",
+    item: "1740321"
+  }
+];
+
+let currentHero = 0;
+
+function loadHero() {
+  const item = heroItems[currentHero];
+  document.getElementById("heroImage").style.backgroundImage = `url(${item.image})`;
+  document.getElementById("heroTitle").innerText = item.name;
+  document.getElementById("heroText").innerText = item.text;
+
+  const thumbs = document.getElementById("heroThumbs");
+  thumbs.innerHTML = heroItems.map((p, i) => `
+    <div class="hero-thumb" onclick="setHero(${i})">
+      <img src="${p.image}" width="60"/>
+      <div>${p.name}</div>
+    </div>
+  `).join("");
+}
+
+function setHero(index) {
+  currentHero = index;
+  loadHero();
+}
+
+function openHeroProduct() {
+  openProduct(heroItems[currentHero].item);
+}
+
+setInterval(() => {
+  currentHero = (currentHero + 1) % heroItems.length;
+  loadHero();
+}, 4000);
+
+loadHero();
 
   <script>
     const catalog = {
