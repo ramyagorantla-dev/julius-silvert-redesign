@@ -10,11 +10,11 @@
   <style>
     * { box-sizing: border-box; }
     :root{
-      --navy:#0d1737;
-      --navy2:#152454;
-      --gold:#cda45b;
-      --gold2:#e8cb93;
-      --bg:#f4f7fb;
+      --navy:#111827;
+      --navy2:#1f2937;
+      --gold:#d4a24c;
+      --gold2:#f1d39a;
+      --bg:#f7f3eb;
       --white:#fff;
       --text:#14213d;
       --muted:#66748f;
@@ -39,8 +39,9 @@
       font-family:'Inter', Arial, Helvetica, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(205,164,91,.12), transparent 20%),
-        linear-gradient(180deg, #eef3f9 0%, #f8fafc 100%);
+        radial-gradient(circle at top left, rgba(212,162,76,.14), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(17,24,39,.06), transparent 18%),
+        linear-gradient(180deg, #f8f5ef 0%, #fcfbf8 100%);
     }
     a{ text-decoration:none; color:inherit; }
     button, input { font-family: inherit; }
@@ -126,10 +127,10 @@
 
     .hero{
       background:
-        linear-gradient(115deg, rgba(13,23,55,.96), rgba(20,33,80,.90)),
-        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+        linear-gradient(115deg, rgba(17,24,39,.90), rgba(31,41,55,.76)),
+        url("https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
       color:#fff;
-      padding:54px 0 40px;
+      padding:72px 0 54px;
     }
     .hero-grid{
       display:grid;
@@ -166,21 +167,21 @@
     }
     .btn:hover { transform:translateY(-1px); }
     .btn-primary{
-      background:linear-gradient(135deg, var(--gold), #f2d396);
-      color:#1b2235;
-    }
+      background:linear-gradient(135deg, var(--gold), #f0cf8a);
+      color:#241a08;
+      box-shadow:0 10px 24px rgba(212,162,76,.28);
     .btn-secondary{
       background:rgba(255,255,255,.06);
       color:#fff; border:1px solid rgba(255,255,255,.18);
     }
 
     .dashboard{
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
       border-radius:28px;
       padding:24px;
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(18px);
+      box-shadow:0 20px 60px rgba(0,0,0,.18);
+      backdrop-filter:blur(20px);
     }
     .dash-head{
       display:flex; justify-content:space-between; align-items:center; color:#fff;
@@ -278,16 +279,16 @@
       gap:20px;
     }
     .product{
-      background:#fff;
+      background:linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
       border-radius:24px;
       overflow:hidden;
-      box-shadow:var(--shadow);
-      border:1px solid #eef2f7;
+      box-shadow:0 16px 34px rgba(17,24,39,.08);
+      border:1px solid #f0e7d8;
       display:flex;
       flex-direction:column;
       transition:transform .18s ease, box-shadow .18s ease;
     }
-    .product:hover { transform:translateY(-4px); box-shadow:0 24px 52px rgba(11,19,44,.15); }
+    .product:hover { transform:translateY(-6px); box-shadow:0 26px 56px rgba(17,24,39,.14); }
     .product-image{
       aspect-ratio:1.15/1;
       background-size:cover;
@@ -549,9 +550,9 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <span class="kicker">CHEF-CENTRIC B2B REDESIGN</span>
-          <h1>Built like a real ordering portal for busy kitchens.</h1>
-          <p>Premium sourcing platform for professional kitchens with faster ordering, cleaner product discovery, and practical buyer tools.</p>
+          <span class="kicker">ARTISAN INGREDIENTS • MODERN ORDERING</span>
+          <h1>Curated sourcing for chefs who buy with precision.</h1>
+          <p>Discover premium ingredients, monitor availability instantly, and build orders through a refined platform designed for serious foodservice buyers.</p>
           <div class="hero-actions">
             <button class="btn btn-primary" onclick="scrollToCatalog()">Browse Catalog</button>
             <button class="btn btn-secondary" onclick="openDrawer('cart')">Open Cart</button>
