@@ -7,11 +7,12 @@ const catalog = {
       {name:"Atlantic Salmon Portions", brand:"PACKER", item:"5400210", price:128.50, pack:"1 x 10lb", status:"In Stock", cls:"in-stock", desc:"Premium salmon portions prepared for consistent B2B kitchen ordering and clear pack-size visibility.", image:"https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=900&q=80", tags:["seafood","salmon","fish","protein"]},
       {name:"U-10 Dry Pack Scallops", brand:"FISHERKING SEAFOODS", item:"5482104", price:156.00, pack:"2 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Large dry-pack scallops with a low-stock alert to help chefs plan substitutions early.", image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80", tags:["seafood","scallops","shellfish"]},
       {name:"Tail-Off IQF Shrimp 16/20", brand:"AMERICANPR", item:"5330205", price:89.75, pack:"5 x 2lb", status:"In Stock", cls:"in-stock", desc:"Consistent frozen shrimp with quick add-to-cart ordering for repeat buyers.", image:"https://images.unsplash.com/photo-1625944525533-473f1a3d54b8?auto=format&fit=crop&w=900&q=80", tags:["seafood","shrimp","shellfish"]},
-      {name:"Spanish Octopus 4/6lb", brand:"OCTOFINO", item:"5509007", price:149.00, pack:"1 x 32lb", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium seafood item with a clearer workflow than unclear market-price buttons.", image:"https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=900&q=80", tags:["seafood","octopus","premium"]},
+      {name:"Spanish Octopus 4/6lb", brand:"OCTOFINO", item:"5509007", price:149.00, pack:"1 x 32lb", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium seafood item with a clearer workflow than unclear market-price buttons.", image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80", tags:["seafood","octopus","premium"]},
       {name:"Cape Hake Fillet IQF", brand:"PANAPESCA", item:"5447014", price:64.10, pack:"5 x 2lb", status:"Restocking Soon", cls:"restock", desc:"Restocking indicator helps buyers understand availability before reaching cart or checkout.", image:"https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80", tags:["seafood","fish","fillet"]},
       {name:"Lobster Claw & Knuckle Meat", brand:"FISHERKING SEAFOODS", item:"5474006", price:143.79, pack:"6 x 2lb", status:"In Stock", cls:"in-stock", desc:"High-value seafood with clear price, pack size, and direct cart interaction.", image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80", tags:["seafood","lobster","premium"]}
     ]
   },
+
   produce: {
     title: "Produce",
     subtitle: "Seasonal produce and chef staples",
@@ -25,6 +26,7 @@ const catalog = {
       {name:"Limes", brand:"PACKER", item:"4900144", price:81.50, pack:"1 x 175ct", status:"In Stock", cls:"in-stock", desc:"Bulk produce item displayed in a cleaner B2B card format.", image:"https://images.unsplash.com/photo-1582284540020-8acbe03f4924?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","citrus"]}
     ]
   },
+
   frozen: {
     title: "Frozen",
     subtitle: "Fast-moving frozen inventory",
@@ -38,6 +40,7 @@ const catalog = {
       {name:"Diced Mango", brand:"PACKER", item:"4555003", price:38.42, pack:"2 x 5lb", status:"Request Quote", cls:"quote-only", desc:"Shows how quote-required frozen products can be handled more clearly.", image:"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=80", tags:["frozen","fruit","mango"]}
     ]
   },
+
   cheese: {
     title: "Cheese & Charcuterie",
     subtitle: "Premium cheese and board-ready selections",
@@ -51,6 +54,7 @@ const catalog = {
       {name:"Soppressata Piccante", brand:"SALUMI", item:"2106007", price:67.90, pack:"12 x 8oz", status:"In Stock", cls:"in-stock", desc:"Better organization for premium cheese and cured meat browsing.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80", tags:["charcuterie","salumi","spicy"]}
     ]
   },
+
   meat: {
     title: "Meat & Poultry",
     subtitle: "Center-of-plate proteins",
@@ -61,9 +65,10 @@ const catalog = {
       {name:"Bone-In Short Rib", brand:"PACKER", item:"1740321", price:144.00, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Bulk protein with clear pack-size and direct quantity adjustment.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", tags:["meat","beef","short rib"]},
       {name:"Air-Chilled Chicken Supreme", brand:"FARMHOUSE", item:"1740880", price:72.10, pack:"4 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Low stock state helps buyers act faster before checkout friction happens.", image:"https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80", tags:["poultry","chicken","protein"]},
       {name:"Pork Cheeks", brand:"COMPART", item:"1816700", price:47.30, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Cleaner product discovery for specialty meat products.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80", tags:["meat","pork","specialty"]},
-      {name:"Duck Breast", brand:"ROULAND", item:"1740991", price:112.60, pack:"1 x 12ct", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium protein with clearer buyer guidance.", image:"https://images.unsplash.com/photo-1600891963935-c1f95af6b1c8?auto=format&fit=crop&w=900&q=80", tags:["poultry","duck","premium"]}
+      {name:"Duck Breast", brand:"ROULAND", item:"1740991", price:112.60, pack:"1 x 12ct", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium protein with clearer buyer guidance.", image:"https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=900&q=80", tags:["poultry","duck","premium"]}
     ]
   },
+
   pantry: {
     title: "Pantry",
     subtitle: "Back-of-house essentials and imported staples",
@@ -84,20 +89,44 @@ const allProducts = Object.values(catalog).flatMap(category =>
 );
 
 const suggestedOrderMap = {
-  italian_restaurant: ["2101098","3300400","3302010","2100441","3303112"],
-  american_catering: ["1740321","5872600","8712007","1740880"],
-  asian_finedining: ["5400210","5482104","4900538","4834000","4900144"],
-  mediterranean_hotel: ["3300400","3300501","4900144","2102201","3304500"],
-  bakery_cafe: ["5872600","8920110","6078004","4555003"]
+  italian_restaurant: ["2101098", "3300400", "3302010", "2100441", "3303112"],
+  italian_cafe: ["2101098", "3300400", "3302010", "5872600"],
+  italian_catering: ["2100441", "3302010", "3300400", "2103033", "3303112"],
+  italian_hotel: ["2101098", "3300400", "3302010", "2100441", "3300501"],
+  italian_finedining: ["2101098", "2100441", "3300501", "3300400", "2102201"],
+
+  american_restaurant: ["1740321", "1740880", "8712007", "5872600"],
+  american_cafe: ["5872600", "8920110", "4900111"],
+  american_catering: ["1740321", "5872600", "8712007", "1740880"],
+  american_hotel: ["1740321", "1740880", "8712007", "4900111"],
+  american_finedining: ["1816666", "1740321", "4834000", "3303112"],
+
+  asian_restaurant: ["5400210", "5330205", "4900144", "4834000"],
+  asian_cafe: ["4555003", "4900144", "4900111"],
+  asian_catering: ["5400210", "5482104", "4900538", "4900144"],
+  asian_hotel: ["5400210", "5482104", "4834000", "4900144"],
+  asian_finedining: ["5400210", "5482104", "4900538", "4834000", "4900144"],
+
+  mediterranean_restaurant: ["3300400", "3300501", "4900144", "2102201"],
+  mediterranean_cafe: ["3300400", "3300501", "2102201"],
+  mediterranean_catering: ["3300400", "3300501", "2103033", "4900144"],
+  mediterranean_hotel: ["3300400", "3300501", "4900144", "2102201", "3304500"],
+  mediterranean_finedining: ["3300400", "3300501", "2100441", "2102201"],
+
+  bakery_restaurant: ["5872600", "6078004", "8920110"],
+  bakery_cafe: ["5872600", "8920110", "6078004", "4555003"],
+  bakery_catering: ["5872600", "6078004", "8920110"],
+  bakery_hotel: ["5872600", "6078004", "8920110", "4900111"],
+  bakery_finedining: ["8920110", "6078004", "4555003"]
 };
 
 const smartPairings = {
-  "5400210": ["4900144","4834000","3300400"],
-  "2101098": ["3302010","3300400","3300501"],
-  "1740321": ["4834000","3303112","4900111"],
-  "8920110": ["4555003","4900111","5872600"],
-  "5482104": ["4900144","3300400","4900538"],
-  "1740880": ["3302010","3300400","4555004"]
+  "5400210": ["4900144", "4834000", "3300400"],
+  "2101098": ["3302010", "3300400", "3300501"],
+  "1740321": ["4834000", "3303112", "4900111"],
+  "8920110": ["4555003", "4900111", "5872600"],
+  "5482104": ["4900144", "3300400", "4900538"],
+  "1740880": ["3302010", "3300400", "4555004"]
 };
 
 let currentCategory = "seafood";
@@ -259,8 +288,10 @@ function addToCartFromCard(item, btn) {
   const card = btn.closest(".product");
   const qty = parseInt(card.querySelector(".qty span").textContent, 10);
   addItem(cart, product, qty);
+
   const savedIndex = saved.findIndex(s => s.item === product.item);
   if (savedIndex > -1) saved.splice(savedIndex, 1);
+
   persist();
   updateDrawerUI();
   updateRelatedByCart();
@@ -281,16 +312,19 @@ function saveFromCard(item) {
 function addToKitchenList(product, listName, qty = 1) {
   if (!requisitions[listName]) requisitions[listName] = [];
   const existing = requisitions[listName].find(item => item.item === product.item);
-  if (existing) existing.qty += qty;
-  else requisitions[listName].push({
-    item: product.item,
-    name: product.name,
-    price: product.price,
-    qty,
-    pack: product.pack,
-    image: product.image,
-    categoryTitle: product.categoryTitle
-  });
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    requisitions[listName].push({
+      item: product.item,
+      name: product.name,
+      price: product.price,
+      qty,
+      pack: product.pack,
+      image: product.image,
+      categoryTitle: product.categoryTitle
+    });
+  }
   persist();
   updateDrawerUI();
 }
@@ -349,8 +383,10 @@ function addCurrentDetailToCart() {
   if (!currentDetailProduct) return;
   const qty = parseInt(document.getElementById("detailQty").textContent, 10);
   addItem(cart, currentDetailProduct, qty);
+
   const savedIndex = saved.findIndex(s => s.item === currentDetailProduct.item);
   if (savedIndex > -1) saved.splice(savedIndex, 1);
+
   persist();
   updateDrawerUI();
   updateRelatedByCart();
@@ -462,6 +498,7 @@ function getRequisitionCount() {
 function getSmartCartRecommendations() {
   if (!cart.length) return [];
   const recommendedIds = [];
+
   cart.forEach(item => {
     const pairings = smartPairings[item.item] || [];
     pairings.forEach(id => {
@@ -470,6 +507,7 @@ function getSmartCartRecommendations() {
       }
     });
   });
+
   return recommendedIds.slice(0, 3).map(findProductByItem).filter(Boolean);
 }
 
@@ -569,8 +607,8 @@ function updateDrawerUI() {
     if (recs.length) {
       drawerItems.innerHTML += `
         <div class="smart-cart-box">
-          <h4>Recommended for Your Order</h4>
-          <p>Commonly bought together based on items already in your cart.</p>
+          <h4>You May Also Need</h4>
+          <p>Selected based on products already in your cart.</p>
           <div class="smart-cart-list">
             ${recs.map(item => `
               <div class="smart-cart-item">
@@ -657,8 +695,15 @@ function closeAllPanels() {
 function generateSuggestedOrder() {
   const cuisine = document.getElementById("cuisineSelect").value;
   const business = document.getElementById("businessSelect").value;
-  const key = `${cuisine}_${business}`;
-  const ids = suggestedOrderMap[key] || [];
+
+  const exactKey = `${cuisine}_${business}`;
+  let ids = suggestedOrderMap[exactKey];
+
+  if (!ids) {
+    const fallbackKeys = Object.keys(suggestedOrderMap).filter(key => key.startsWith(`${cuisine}_`));
+    ids = fallbackKeys.length ? suggestedOrderMap[fallbackKeys[0]] : [];
+  }
+
   currentSuggestedItems = ids.map(findProductByItem).filter(Boolean);
 
   const builderResults = document.getElementById("builderResults");
@@ -669,13 +714,13 @@ function generateSuggestedOrder() {
   builderTitle.textContent = "Suggested Order";
   builderDescription.textContent = `Recommended for ${capitalize(cuisine)} ${readableBusiness(business)} service.`;
 
+  builderResults.classList.add("show");
+
   if (!currentSuggestedItems.length) {
-    builderResults.classList.add("show");
     suggestedGrid.innerHTML = `<div class="empty-state">No suggested order found for this selection.</div>`;
     return;
   }
 
-  builderResults.classList.add("show");
   suggestedGrid.innerHTML = currentSuggestedItems.map(renderProductCard).join("");
 }
 
@@ -754,7 +799,7 @@ function sendChat() {
   } else if (lower.includes("kitchen list") || lower.includes("requisition")) {
     reply = "Use the List button to create or add to a kitchen list. Items can later move into cart.";
   } else if (lower.includes("suggested order") || lower.includes("build my order")) {
-    reply = "Use Build My Order to generate a hardcoded suggested order based on cuisine and service type.";
+    reply = "Use Build My Order to generate a suggested set based on cuisine and service type.";
   } else if (lower.includes("support") || lower.includes("contact") || lower.includes("help")) {
     reply = "Please contact support at ramyagorantla2001@gmail.com.";
   } else {
