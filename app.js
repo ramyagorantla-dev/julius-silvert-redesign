@@ -4,12 +4,78 @@ const catalog = {
     subtitle: "Chef-selected seafood essentials",
     description: "Fresh and frozen fish, shellfish, and premium proteins for modern kitchens.",
     products: [
-      {name:"Atlantic Salmon Portions", brand:"PACKER", item:"5400210", price:128.50, pack:"1 x 10lb", status:"In Stock", cls:"in-stock", desc:"Premium salmon portions prepared for consistent B2B kitchen ordering and clear pack-size visibility.", image:"https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=900&q=80", tags:["seafood","salmon","fish","protein"]},
-      {name:"U-10 Dry Pack Scallops", brand:"FISHERKING SEAFOODS", item:"5482104", price:156.00, pack:"2 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Large dry-pack scallops with a low-stock alert to help chefs plan substitutions early.", image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80", tags:["seafood","scallops","shellfish"]},
-      {name:"Tail-Off IQF Shrimp 16/20", brand:"AMERICANPR", item:"5330205", price:89.75, pack:"5 x 2lb", status:"In Stock", cls:"in-stock", desc:"Consistent frozen shrimp with quick add-to-cart ordering for repeat buyers.", image:"https://images.unsplash.com/photo-1625944525533-473f1a3d54b8?auto=format&fit=crop&w=900&q=80", tags:["seafood","shrimp","shellfish"]},
-      {name:"Spanish Octopus 4/6lb", brand:"OCTOFINO", item:"5509007", price:149.00, pack:"1 x 32lb", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium seafood item with a clearer workflow than unclear market-price buttons.", image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80", tags:["seafood","octopus","premium"]},
-      {name:"Cape Hake Fillet IQF", brand:"PANAPESCA", item:"5447014", price:64.10, pack:"5 x 2lb", status:"Restocking Soon", cls:"restock", desc:"Restocking indicator helps buyers understand availability before reaching cart or checkout.", image:"https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80", tags:["seafood","fish","fillet"]},
-      {name:"Lobster Claw & Knuckle Meat", brand:"FISHERKING SEAFOODS", item:"5474006", price:143.79, pack:"6 x 2lb", status:"In Stock", cls:"in-stock", desc:"High-value seafood with clear price, pack size, and direct cart interaction.", image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80", tags:["seafood","lobster","premium"]}
+      {
+        name:"Atlantic Salmon Portions",
+        brand:"PACKER",
+        item:"5400210",
+        price:128.50,
+        pack:"1 x 10lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Premium salmon portions prepared for consistent B2B kitchen ordering and clear pack-size visibility.",
+        image:"https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&w=900&q=80",
+        tags:["seafood","salmon","fish","protein"]
+      },
+      {
+        name:"U-10 Dry Pack Scallops",
+        brand:"FISHERKING SEAFOODS",
+        item:"5482104",
+        price:156.00,
+        pack:"2 x 5lb",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Large dry-pack scallops with a low-stock alert to help chefs plan substitutions early.",
+        image:"https://images.unsplash.com/photo-1604909052743-94e838986d24?auto=format&fit=crop&w=900&q=80",
+        tags:["seafood","scallops","shellfish"]
+      },
+      {
+        name:"Tail-Off IQF Shrimp 16/20",
+        brand:"AMERICANPR",
+        item:"5330205",
+        price:89.75,
+        pack:"5 x 2lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Consistent frozen shrimp with quick add-to-cart ordering for repeat buyers.",
+        image:"https://images.unsplash.com/photo-1565680018434-b513d1e5fd47?auto=format&fit=crop&w=900&q=80",
+        tags:["seafood","shrimp","shellfish"]
+      },
+      {
+        name:"Spanish Octopus 4/6lb",
+        brand:"OCTOFINO",
+        item:"5509007",
+        price:149.00,
+        pack:"1 x 32lb",
+        status:"Request Quote",
+        cls:"quote-only",
+        desc:"Quote-required premium seafood item with a clearer workflow than unclear market-price buttons.",
+        image:"https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80",
+        tags:["seafood","octopus","premium"]
+      },
+      {
+        name:"Cape Hake Fillet IQF",
+        brand:"PANAPESCA",
+        item:"5447014",
+        price:64.10,
+        pack:"5 x 2lb",
+        status:"Restocking Soon",
+        cls:"restock",
+        desc:"Restocking indicator helps buyers understand availability before reaching cart or checkout.",
+        image:"https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=900&q=80",
+        tags:["seafood","fish","fillet"]
+      },
+      {
+        name:"Lobster Claw & Knuckle Meat",
+        brand:"FISHERKING SEAFOODS",
+        item:"5474006",
+        price:143.79,
+        pack:"6 x 2lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"High-value seafood with clear price, pack size, and direct cart interaction.",
+        image:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+        tags:["seafood","lobster","premium"]
+      }
     ]
   },
 
@@ -18,12 +84,78 @@ const catalog = {
     subtitle: "Seasonal produce and chef staples",
     description: "Fresh greens, herbs, citrus, mushrooms, and specialty vegetables for service-ready prep.",
     products: [
-      {name:"Microgreens Assortment", brand:"PACKER", item:"4900538", price:39.50, pack:"1 x 12ct", status:"Low Stock", cls:"low-stock", desc:"Microgreens with low-stock messaging for faster menu planning and substitution decisions.", image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80", tags:["produce","greens","microgreens"]},
-      {name:"Fresh Black Winter Truffles", brand:"URBANI", item:"7756405", price:245.00, pack:"1 x 4oz", status:"Request Quote", cls:"quote-only", desc:"Premium produce item where quote flow is intentionally separated from normal add-to-cart logic.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80", tags:["produce","truffles","premium"]},
-      {name:"Blood Oranges", brand:"PACKER", item:"4900111", price:41.50, pack:"1 x 54ct", status:"In Stock", cls:"in-stock", desc:"Citrus product displayed with cleaner card structure and pack-size clarity.", image:"https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","citrus"]},
-      {name:"Asian Pears", brand:"PACKER", item:"4900221", price:68.00, pack:"1 x 24ct", status:"In Stock", cls:"in-stock", desc:"Fresh produce example showing improved item differentiation and buyer-focused catalog presentation.", image:"https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","pears"]},
-      {name:"Mushroom Mix", brand:"PACKER", item:"4834000", price:58.20, pack:"1 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Mixed mushrooms with clear alert state and easier add-to-cart experience.", image:"https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=900&q=80", tags:["produce","mushrooms"]},
-      {name:"Limes", brand:"PACKER", item:"4900144", price:81.50, pack:"1 x 175ct", status:"In Stock", cls:"in-stock", desc:"Bulk produce item displayed in a cleaner B2B card format.", image:"https://images.unsplash.com/photo-1582284540020-8acbe03f4924?auto=format&fit=crop&w=900&q=80", tags:["produce","fruit","citrus"]}
+      {
+        name:"Microgreens Assortment",
+        brand:"PACKER",
+        item:"4900538",
+        price:39.50,
+        pack:"1 x 12ct",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Microgreens with low-stock messaging for faster menu planning and substitution decisions.",
+        image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80",
+        tags:["produce","greens","microgreens"]
+      },
+      {
+        name:"Fresh Black Winter Truffles",
+        brand:"URBANI",
+        item:"7756405",
+        price:245.00,
+        pack:"1 x 4oz",
+        status:"Request Quote",
+        cls:"quote-only",
+        desc:"Premium produce item where quote flow is intentionally separated from normal add-to-cart logic.",
+        image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80",
+        tags:["produce","truffles","premium"]
+      },
+      {
+        name:"Blood Oranges",
+        brand:"PACKER",
+        item:"4900111",
+        price:41.50,
+        pack:"1 x 54ct",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Citrus product displayed with cleaner card structure and pack-size clarity.",
+        image:"https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=900&q=80",
+        tags:["produce","fruit","citrus"]
+      },
+      {
+        name:"Asian Pears",
+        brand:"PACKER",
+        item:"4900221",
+        price:68.00,
+        pack:"1 x 24ct",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Fresh produce example showing improved item differentiation and buyer-focused catalog presentation.",
+        image:"https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=900&q=80",
+        tags:["produce","fruit","pears"]
+      },
+      {
+        name:"Mushroom Mix",
+        brand:"PACKER",
+        item:"4834000",
+        price:58.20,
+        pack:"1 x 5lb",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Mixed mushrooms with clear alert state and easier add-to-cart experience.",
+        image:"https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=900&q=80",
+        tags:["produce","mushrooms"]
+      },
+      {
+        name:"Limes",
+        brand:"PACKER",
+        item:"4900144",
+        price:81.50,
+        pack:"1 x 175ct",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Bulk produce item displayed in a cleaner B2B card format.",
+        image:"https://images.unsplash.com/photo-1582284540020-8acbe03f4924?auto=format&fit=crop&w=900&q=80",
+        tags:["produce","fruit","citrus"]
+      }
     ]
   },
 
@@ -32,12 +164,78 @@ const catalog = {
     subtitle: "Fast-moving frozen inventory",
     description: "Seafood, vegetables, desserts, bakery, and ready-to-bake products with clear status messaging.",
     products: [
-      {name:"Artisan Brioche Rolls", brand:"MARTIN'S FAMOUS", item:"5872600", price:28.25, pack:"6 x 8ct", status:"In Stock", cls:"in-stock", desc:"Bakery item designed to show catalog consistency and quick repeat-order interactions.", image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80", tags:["frozen","bakery","bread"]},
-      {name:"Chocolate Gelato", brand:"LONGFORD'S", item:"8920110", price:61.38, pack:"1 x 5qt", status:"In Stock", cls:"in-stock", desc:"Frozen dessert with clear pack-size visibility and direct add-to-cart flow.", image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80", tags:["frozen","dessert","gelato"]},
-      {name:"Tater Tot Puffs", brand:"LAMBWESTON", item:"8712007", price:89.62, pack:"6 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Bulk frozen side with low-stock indication.", image:"https://images.unsplash.com/photo-1639744092480-7d5d6e27bb1e?auto=format&fit=crop&w=900&q=80", tags:["frozen","sides","potato"]},
-      {name:"Spinach & Feta Danishes", brand:"DUFOUR GOURMET", item:"6078004", price:128.84, pack:"1 x 112ct", status:"Restocking Soon", cls:"restock", desc:"Restocking state improves visibility before ordering decisions are made.", image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80", tags:["frozen","bakery","pastry"]},
-      {name:"Frozen Mirepoix Mix", brand:"ARTICGARDE", item:"4555004", price:55.27, pack:"6 x 4.4lb", status:"In Stock", cls:"in-stock", desc:"Back-of-house prep item displayed in a cleaner product layout.", image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80", tags:["frozen","vegetables","prep"]},
-      {name:"Diced Mango", brand:"PACKER", item:"4555003", price:38.42, pack:"2 x 5lb", status:"Request Quote", cls:"quote-only", desc:"Shows how quote-required frozen products can be handled more clearly.", image:"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=80", tags:["frozen","fruit","mango"]}
+      {
+        name:"Artisan Brioche Rolls",
+        brand:"MARTIN'S FAMOUS",
+        item:"5872600",
+        price:28.25,
+        pack:"6 x 8ct",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Bakery item designed to show catalog consistency and quick repeat-order interactions.",
+        image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80",
+        tags:["frozen","bakery","bread"]
+      },
+      {
+        name:"Chocolate Gelato",
+        brand:"LONGFORD'S",
+        item:"8920110",
+        price:61.38,
+        pack:"1 x 5qt",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Frozen dessert with clear pack-size visibility and direct add-to-cart flow.",
+        image:"https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=80",
+        tags:["frozen","dessert","gelato"]
+      },
+      {
+        name:"Tater Tot Puffs",
+        brand:"LAMBWESTON",
+        item:"8712007",
+        price:89.62,
+        pack:"6 x 5lb",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Bulk frozen side with low-stock indication.",
+        image:"https://images.unsplash.com/photo-1639744092480-7d5d6e27bb1e?auto=format&fit=crop&w=900&q=80",
+        tags:["frozen","sides","potato"]
+      },
+      {
+        name:"Spinach & Feta Danishes",
+        brand:"DUFOUR GOURMET",
+        item:"6078004",
+        price:128.84,
+        pack:"1 x 112ct",
+        status:"Restocking Soon",
+        cls:"restock",
+        desc:"Restocking state improves visibility before ordering decisions are made.",
+        image:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80",
+        tags:["frozen","bakery","pastry"]
+      },
+      {
+        name:"Frozen Mirepoix Mix",
+        brand:"ARTICGARDE",
+        item:"4555004",
+        price:55.27,
+        pack:"6 x 4.4lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Back-of-house prep item displayed in a cleaner product layout.",
+        image:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+        tags:["frozen","vegetables","prep"]
+      },
+      {
+        name:"Diced Mango",
+        brand:"PACKER",
+        item:"4555003",
+        price:38.42,
+        pack:"2 x 5lb",
+        status:"Request Quote",
+        cls:"quote-only",
+        desc:"Shows how quote-required frozen products can be handled more clearly.",
+        image:"https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=900&q=80",
+        tags:["frozen","fruit","mango"]
+      }
     ]
   },
 
@@ -46,12 +244,78 @@ const catalog = {
     subtitle: "Premium cheese and board-ready selections",
     description: "Imported cheeses, cured meats, soft cheeses, and chef-selected charcuterie essentials.",
     products: [
-      {name:"Parmigiano Reggiano Wheel", brand:"ITALIAN IMPORTS", item:"2100441", price:299.00, pack:"1 x 72lb", status:"In Stock", cls:"in-stock", desc:"Large-format imported cheese with account-oriented B2B visibility.", image:"https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80", tags:["cheese","imported","parmigiano"]},
-      {name:"Fresh Burrata", brand:"BELGIOIOSO", item:"2101098", price:42.75, pack:"8 x 2ct", status:"Low Stock", cls:"low-stock", desc:"Premium fresh cheese with clearer availability guidance.", image:"https://images.unsplash.com/photo-1626201850125-a96f2600eeae?auto=format&fit=crop&w=900&q=80", tags:["cheese","fresh","burrata"]},
-      {name:"Prosciutto di Parma", brand:"PARMA RESERVE", item:"2103033", price:189.50, pack:"1 x 14lb", status:"In Stock", cls:"in-stock", desc:"Charcuterie item displayed with better product hierarchy and clean actions.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", tags:["charcuterie","prosciutto","imported"]},
-      {name:"Triple Cream Brie", brand:"FROMAGERIE", item:"2102201", price:58.20, pack:"2 x 3kg", status:"In Stock", cls:"in-stock", desc:"Imported cheese showcased in a premium product-detail flow.", image:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80", tags:["cheese","brie","soft cheese"]},
-      {name:"Spanish Manchego", brand:"IBERIA FOODS", item:"2105112", price:74.40, pack:"1 x 12lb", status:"Restocking Soon", cls:"restock", desc:"Restocking alerts reduce buyer uncertainty during ordering.", image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80", tags:["cheese","manchego","imported"]},
-      {name:"Soppressata Piccante", brand:"SALUMI", item:"2106007", price:67.90, pack:"12 x 8oz", status:"In Stock", cls:"in-stock", desc:"Better organization for premium cheese and cured meat browsing.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80", tags:["charcuterie","salumi","spicy"]}
+      {
+        name:"Parmigiano Reggiano Wheel",
+        brand:"ITALIAN IMPORTS",
+        item:"2100441",
+        price:299.00,
+        pack:"1 x 72lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Large-format imported cheese with account-oriented B2B visibility.",
+        image:"https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80",
+        tags:["cheese","imported","parmigiano"]
+      },
+      {
+        name:"Fresh Burrata",
+        brand:"BELGIOIOSO",
+        item:"2101098",
+        price:42.75,
+        pack:"8 x 2ct",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Premium fresh cheese with clearer availability guidance.",
+        image:"https://images.unsplash.com/photo-1626201850125-a96f2600eeae?auto=format&fit=crop&w=900&q=80",
+        tags:["cheese","fresh","burrata"]
+      },
+      {
+        name:"Prosciutto di Parma",
+        brand:"PARMA RESERVE",
+        item:"2103033",
+        price:189.50,
+        pack:"1 x 14lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Charcuterie item displayed with better product hierarchy and clean actions.",
+        image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+        tags:["charcuterie","prosciutto","imported"]
+      },
+      {
+        name:"Triple Cream Brie",
+        brand:"FROMAGERIE",
+        item:"2102201",
+        price:58.20,
+        pack:"2 x 3kg",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Imported cheese showcased in a premium product-detail flow.",
+        image:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=900&q=80",
+        tags:["cheese","brie","soft cheese"]
+      },
+      {
+        name:"Spanish Manchego",
+        brand:"IBERIA FOODS",
+        item:"2105112",
+        price:74.40,
+        pack:"1 x 12lb",
+        status:"Restocking Soon",
+        cls:"restock",
+        desc:"Restocking alerts reduce buyer uncertainty during ordering.",
+        image:"https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=900&q=80",
+        tags:["cheese","manchego","imported"]
+      },
+      {
+        name:"Soppressata Piccante",
+        brand:"SALUMI",
+        item:"2106007",
+        price:67.90,
+        pack:"12 x 8oz",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Better organization for premium cheese and cured meat browsing.",
+        image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80",
+        tags:["charcuterie","salumi","spicy"]
+      }
     ]
   },
 
@@ -60,12 +324,78 @@ const catalog = {
     subtitle: "Center-of-plate proteins",
     description: "Premium beef, pork, lamb, and poultry selections for chef-driven kitchens.",
     products: [
-      {name:"Chef Ready Tenderloin", brand:"COMPART", item:"1816666", price:189.75, pack:"2 x 5lb", status:"Restocking Soon", cls:"restock", desc:"High-value protein with clear status indicators and simplified item actions.", image:"https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=80", tags:["meat","beef","tenderloin"]},
-      {name:"Ground Lamb", brand:"PACKER", item:"1740201", price:95.20, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Protein item displayed in a cleaner, more professional B2B card layout.", image:"https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=80", tags:["meat","lamb","ground"]},
-      {name:"Bone-In Short Rib", brand:"PACKER", item:"1740321", price:144.00, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Bulk protein with clear pack-size and direct quantity adjustment.", image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80", tags:["meat","beef","short rib"]},
-      {name:"Air-Chilled Chicken Supreme", brand:"FARMHOUSE", item:"1740880", price:72.10, pack:"4 x 5lb", status:"Low Stock", cls:"low-stock", desc:"Low stock state helps buyers act faster before checkout friction happens.", image:"https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80", tags:["poultry","chicken","protein"]},
-      {name:"Pork Cheeks", brand:"COMPART", item:"1816700", price:47.30, pack:"2 x 5lb", status:"In Stock", cls:"in-stock", desc:"Cleaner product discovery for specialty meat products.", image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80", tags:["meat","pork","specialty"]},
-      {name:"Duck Breast", brand:"ROULAND", item:"1740991", price:112.60, pack:"1 x 12ct", status:"Request Quote", cls:"quote-only", desc:"Quote-required premium protein with clearer buyer guidance.", image:"https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=900&q=80", tags:["poultry","duck","premium"]}
+      {
+        name:"Chef Ready Tenderloin",
+        brand:"COMPART",
+        item:"1816666",
+        price:189.75,
+        pack:"2 x 5lb",
+        status:"Restocking Soon",
+        cls:"restock",
+        desc:"High-value protein with clear status indicators and simplified item actions.",
+        image:"https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=80",
+        tags:["meat","beef","tenderloin"]
+      },
+      {
+        name:"Ground Lamb",
+        brand:"PACKER",
+        item:"1740201",
+        price:95.20,
+        pack:"2 x 5lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Protein item displayed in a cleaner, more professional B2B card layout.",
+        image:"https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=80",
+        tags:["meat","lamb","ground"]
+      },
+      {
+        name:"Bone-In Short Rib",
+        brand:"PACKER",
+        item:"1740321",
+        price:144.00,
+        pack:"2 x 5lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Bulk protein with clear pack-size and direct quantity adjustment.",
+        image:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+        tags:["meat","beef","short rib"]
+      },
+      {
+        name:"Air-Chilled Chicken Supreme",
+        brand:"FARMHOUSE",
+        item:"1740880",
+        price:72.10,
+        pack:"4 x 5lb",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Low stock state helps buyers act faster before checkout friction happens.",
+        image:"https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=900&q=80",
+        tags:["poultry","chicken","protein"]
+      },
+      {
+        name:"Pork Cheeks",
+        brand:"COMPART",
+        item:"1816700",
+        price:47.30,
+        pack:"2 x 5lb",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Cleaner product discovery for specialty meat products.",
+        image:"https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=900&q=80",
+        tags:["meat","pork","specialty"]
+      },
+      {
+        name:"Duck Breast",
+        brand:"ROULAND",
+        item:"1740991",
+        price:112.60,
+        pack:"1 x 12ct",
+        status:"Request Quote",
+        cls:"quote-only",
+        desc:"Quote-required premium protein with clearer buyer guidance.",
+        image:"https://images.unsplash.com/photo-1518492104633-130d0cc84637?auto=format&fit=crop&w=900&q=80",
+        tags:["poultry","duck","premium"]
+      }
     ]
   },
 
@@ -74,12 +404,78 @@ const catalog = {
     subtitle: "Back-of-house essentials and imported staples",
     description: "Oils, vinegars, canned goods, dry goods, grains, and specialty pantry products.",
     products: [
-      {name:"Extra Virgin Olive Oil", brand:"MEDITERRA", item:"3300400", price:84.50, pack:"4 x 3L", status:"In Stock", cls:"in-stock", desc:"Pantry staple displayed with cleaner pricing and pack-size structure.", image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80", tags:["pantry","oil","imported"]},
-      {name:"Aged Balsamic Vinegar", brand:"MODENA", item:"3300501", price:63.20, pack:"6 x 500ml", status:"In Stock", cls:"in-stock", desc:"Imported pantry item designed to feel more premium and professional.", image:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&w=900&q=80", tags:["pantry","vinegar","imported"]},
-      {name:"Ruby Tuna in Water", brand:"RUBY TUNA", item:"5539000", price:118.61, pack:"6 x 66oz", status:"Low Stock", cls:"low-stock", desc:"Pantry protein with clear status chips and faster ordering interactions.", image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80", tags:["pantry","tuna","protein"]},
-      {name:"San Marzano Tomatoes", brand:"ITALIA", item:"3302010", price:42.00, pack:"6 x 102oz", status:"In Stock", cls:"in-stock", desc:"High-use kitchen staple in a cleaner card layout.", image:"https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?auto=format&fit=crop&w=900&q=80", tags:["pantry","tomatoes","imported"]},
-      {name:"Arborio Rice", brand:"RISERIA", item:"3303112", price:37.60, pack:"4 x 5lb", status:"Restocking Soon", cls:"restock", desc:"Restocking pantry staple with improved visibility earlier in the ordering flow.", image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80", tags:["pantry","rice","grains"]},
-      {name:"Imported Capers", brand:"SICILIA", item:"3304500", price:28.90, pack:"12 x 32oz", status:"In Stock", cls:"in-stock", desc:"Imported pantry item with easier add and save flows.", image:"https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=900&q=80", tags:["pantry","capers","imported"]}
+      {
+        name:"Extra Virgin Olive Oil",
+        brand:"MEDITERRA",
+        item:"3300400",
+        price:84.50,
+        pack:"4 x 3L",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Pantry staple displayed with cleaner pricing and pack-size structure.",
+        image:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=900&q=80",
+        tags:["pantry","oil","imported"]
+      },
+      {
+        name:"Aged Balsamic Vinegar",
+        brand:"MODENA",
+        item:"3300501",
+        price:63.20,
+        pack:"6 x 500ml",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Imported pantry item designed to feel more premium and professional.",
+        image:"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&w=900&q=80",
+        tags:["pantry","vinegar","imported"]
+      },
+      {
+        name:"Ruby Tuna in Water",
+        brand:"RUBY TUNA",
+        item:"5539000",
+        price:118.61,
+        pack:"6 x 66oz",
+        status:"Low Stock",
+        cls:"low-stock",
+        desc:"Pantry protein with clear status chips and faster ordering interactions.",
+        image:"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80",
+        tags:["pantry","tuna","protein"]
+      },
+      {
+        name:"San Marzano Tomatoes",
+        brand:"ITALIA",
+        item:"3302010",
+        price:42.00,
+        pack:"6 x 102oz",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"High-use kitchen staple in a cleaner card layout.",
+        image:"https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?auto=format&fit=crop&w=900&q=80",
+        tags:["pantry","tomatoes","imported"]
+      },
+      {
+        name:"Arborio Rice",
+        brand:"RISERIA",
+        item:"3303112",
+        price:37.60,
+        pack:"4 x 5lb",
+        status:"Restocking Soon",
+        cls:"restock",
+        desc:"Restocking pantry staple with improved visibility earlier in the ordering flow.",
+        image:"https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=900&q=80",
+        tags:["pantry","rice","grains"]
+      },
+      {
+        name:"Imported Capers",
+        brand:"SICILIA",
+        item:"3304500",
+        price:28.90,
+        pack:"12 x 32oz",
+        status:"In Stock",
+        cls:"in-stock",
+        desc:"Imported pantry item with easier add and save flows.",
+        image:"https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?auto=format&fit=crop&w=900&q=80",
+        tags:["pantry","capers","imported"]
+      }
     ]
   }
 };
@@ -108,14 +504,14 @@ const suggestedOrderMap = {
   asian_finedining: ["5400210", "5482104", "4900538", "4834000", "4900144"],
 
   mediterranean_restaurant: ["3300400", "3300501", "4900144", "2102201"],
-  mediterranean_cafe: ["3300400", "3300501", "2102201"],
-  mediterranean_catering: ["3300400", "3300501", "2103033", "4900144"],
+  mediterranean_cafe: ["3300400", "3300501", "2102201", "3304500"],
+  mediterranean_catering: ["3300400", "3300501", "2103033", "4900144", "3304500"],
   mediterranean_hotel: ["3300400", "3300501", "4900144", "2102201", "3304500"],
   mediterranean_finedining: ["3300400", "3300501", "2100441", "2102201"],
 
   bakery_restaurant: ["5872600", "6078004", "8920110"],
   bakery_cafe: ["5872600", "8920110", "6078004", "4555003"],
-  bakery_catering: ["5872600", "6078004", "8920110"],
+  bakery_catering: ["5872600", "6078004", "8920110", "4900111"],
   bakery_hotel: ["5872600", "6078004", "8920110", "4900111"],
   bakery_finedining: ["8920110", "6078004", "4555003"]
 };
@@ -699,9 +1095,15 @@ function generateSuggestedOrder() {
   const exactKey = `${cuisine}_${business}`;
   let ids = suggestedOrderMap[exactKey];
 
-  if (!ids) {
-    const fallbackKeys = Object.keys(suggestedOrderMap).filter(key => key.startsWith(`${cuisine}_`));
-    ids = fallbackKeys.length ? suggestedOrderMap[fallbackKeys[0]] : [];
+  if (!ids || !ids.length) {
+    const cuisineFallback = Object.keys(suggestedOrderMap).find(key => key.startsWith(`${cuisine}_`));
+    if (cuisineFallback) {
+      ids = suggestedOrderMap[cuisineFallback];
+    }
+  }
+
+  if (!ids || !ids.length) {
+    ids = ["5400210", "2101098", "3300400", "3302010"];
   }
 
   currentSuggestedItems = ids.map(findProductByItem).filter(Boolean);
@@ -799,7 +1201,7 @@ function sendChat() {
   } else if (lower.includes("kitchen list") || lower.includes("requisition")) {
     reply = "Use the List button to create or add to a kitchen list. Items can later move into cart.";
   } else if (lower.includes("suggested order") || lower.includes("build my order")) {
-    reply = "Use Build My Order to generate a suggested set based on cuisine and service type.";
+    reply = "Use Build My Order to generate a curated starting order based on cuisine and service type.";
   } else if (lower.includes("support") || lower.includes("contact") || lower.includes("help")) {
     reply = "Please contact support at ramyagorantla2001@gmail.com.";
   } else {
@@ -826,3 +1228,4 @@ document.addEventListener("keydown", (e) => {
 
 renderProducts(currentCategory);
 updateDrawerUI();
+generateSuggestedOrder();
