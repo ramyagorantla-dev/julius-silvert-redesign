@@ -1192,7 +1192,7 @@ function sendChat() {
 
   addChatMessage(text, "user");
   const lower = text.toLowerCase();
-  let reply = "I could not find a direct answer for that. You can contact support at 856(526)0268.";
+  let reply = "I could not find a direct answer for that. You can contact support at 856(526)0268";
 
   if (lower.includes("cart")) {
     reply = "You can add items from the catalog or product page. The cart also shows recommended add-ons.";
