@@ -1192,7 +1192,7 @@ function sendChat() {
 
   addChatMessage(text, "user");
   const lower = text.toLowerCase();
-  let reply = "I could not find a direct answer for that. You can contact support at ramyagorantla2001@gmail.com.";
+  let reply = "I could not find a direct answer for that. You can contact support at 856(526)0268.";
 
   if (lower.includes("cart")) {
     reply = "You can add items from the catalog or product page. The cart also shows recommended add-ons.";
@@ -1203,7 +1203,7 @@ function sendChat() {
   } else if (lower.includes("suggested order") || lower.includes("build my order")) {
     reply = "Use Build My Order to generate a curated starting order based on cuisine and service type.";
   } else if (lower.includes("support") || lower.includes("contact") || lower.includes("help")) {
-    reply = "Please contact support at ramyagorantla2001@gmail.com.";
+    reply = "Please contact support at 856(526)0268";
   } else {
     const found = allProducts.find(p =>
       [p.name, p.brand, ...(p.tags || [])].join(" ").toLowerCase().includes(lower)
